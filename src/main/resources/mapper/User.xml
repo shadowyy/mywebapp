@@ -5,5 +5,4 @@
     <select id="queryUserById" parameterType="int" resultType="user">
 		select * from user where id=#{id}
 	</select>
-
 </mapper>
