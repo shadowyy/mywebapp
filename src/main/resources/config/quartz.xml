@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd ">
+
+    <!--任务类-->
+    <bean id="taskJob" class="com.shadow.task.TaskDemo"/>
+
+    <!-- 线程执行器配置，用于任务注册 -->
+    <bean id="executor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="10"/>
+        <property name="maxPoolSize" value="100"/>
+        <!-- 线程池维护线程所允许的空闲时间 -->
+        <property name="keepAliveSeconds" value="30000"/>
+        <!-- 线程池所使用的缓冲队列 -->
+        <property name="queueCapacity" value="500"/>
+    </bean>
+
+    <!--配置JOB-->
+    <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="taskJob"/>
+        <property name="targetMethod" value="executeA"/>
+        <!--不允许并发。false表示等上一个任务执行完后再开启新的任务-->
+        <property name="concurrent" value="false"/>
+    </bean>
+
+    <!--  调度触发器 -->
+    <bean id="myTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <!-- jobDetail是Spring定时器的特殊属性 -->
+        <property name="jobDetail" ref="jobDetail"/>
+        <!-- cronExpression是Spring定时器的特殊属性 -->
+        <property name="cronExpression">
+            <value>0/5 * * * * ?</value>
+        </property>
+    </bean>
+
+    <!-- 调度工厂 -->
+    <bean id="schedulerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" autowire="no"
+          lazy-init="false">
+        <property name="triggers">
+            <list>
+                <ref bean="myTrigger"/>
+            </list>
+        </property>
+        <property name="taskExecutor" ref="executor"/>
+    </bean>
+
+</beans>  
