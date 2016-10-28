@@ -1,5 +1,7 @@
 package com.shadow.domain;
 
+import java.util.Date;
+
 public class User {
     public User() {
     }

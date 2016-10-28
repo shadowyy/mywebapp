@@ -11,33 +11,17 @@
     <!--告知Spring，我们启用注解驱动-->
     <mvc:annotation-driven/>
     <!-- 使用注解的包，包括子集 -->
-    <context:component-scan base-package="com.shadow.controller"/>
-    <context:component-scan base-package="com.shadow.service"/>
-    <context:component-scan base-package="com.shadow.dao"/>
-    <!--<context:component-scan base-package="com.shadow" use-default-filters="false">-->
-        <!--<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
-        <!--<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>-->
-        <!--<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>-->
-        <!--<context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>-->
-    <!--</context:component-scan>-->
+    <!--<context:component-scan base-package="com.shadow.controller"/>-->
+    <!--<context:component-scan base-package="com.shadow.service"/>-->
+    <!--<context:component-scan base-package="com.shadow.dao"/>-->
+    <context:component-scan base-package="com.shadow" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+    </context:component-scan>
 
-    <!--&lt;!&ndash; 避免IE执行AJAX时,返回JSON出现下载文件 &ndash;&gt;-->
-    <!--<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">-->
-        <!--<property name="supportedMediaTypes">-->
-            <!--<list>-->
-                <!--<value>text/html;charset=UTF-8</value>-->
-            <!--</list>-->
-        <!--</property>-->
-    <!--</bean>-->
-
-    <!--&lt;!&ndash; 启动Spring MVC的注解功能，完成请求和注解POJO的映射 &ndash;&gt;-->
-    <!--<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">-->
-        <!--<property name="messageConverters">-->
-            <!--<list>-->
-                <!--<ref bean="mappingJacksonHttpMessageConverter"/>&lt;!&ndash; json转换器 &ndash;&gt;-->
-            <!--</list>-->
-        <!--</property>-->
-    <!--</bean>-->
+    <!--<mvc:resources mapping="/resources/**" location="/resources/" />-->
 
     <!-- velocity配置 -->
     <bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">

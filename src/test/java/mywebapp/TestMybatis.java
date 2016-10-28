@@ -17,7 +17,7 @@ public class TestMybatis {
 	@Test
 	public void test() throws Exception {
 		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder()
-				.build(Resources.getResourceAsStream("config/mybatis-config.xml"));
+				.build(Resources.getResourceAsStream("spring/mybatis-config.xml"));
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		User user = null;
 		// 方法1

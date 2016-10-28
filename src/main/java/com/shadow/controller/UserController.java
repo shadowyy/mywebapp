@@ -1,14 +1,14 @@
 package com.shadow.controller;
 
 import com.shadow.domain.User;
-import com.shadow.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.shadow.service.IUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -18,8 +18,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/list")
 public class UserController {
-    @Autowired
-    private UserService userService;
+    @Resource
+    private IUserService userServiceImpl;
 
     @RequestMapping("/users")
     public String users(ModelMap model) {
@@ -43,8 +43,8 @@ public class UserController {
 
     @RequestMapping(value = "/queryUser", method = RequestMethod.GET)
     @ResponseBody
-    public User queryUserById(@RequestParam(defaultValue = "1", required = false) int id) {
-        return userService.queryUserById(id);
+    public User queryUserById(@RequestBody User user) {
+        return userServiceImpl.queryUserById(user.getId());
     }
 
 }

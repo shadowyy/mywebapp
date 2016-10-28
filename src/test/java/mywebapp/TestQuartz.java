@@ -8,7 +8,7 @@ public class TestQuartz {
 	@Test
 	public void testTask() throws Exception {
 		System.out.println("test start!"); 
-		ApplicationContext context = new ClassPathXmlApplicationContext("config/quartz.xml"); 
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring/quartz.xml");
 		System.out.println("test end!"); 
 	}
 }
