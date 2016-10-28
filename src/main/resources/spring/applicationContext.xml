@@ -8,4 +8,20 @@
     <import resource="mybatis-spring.xml"/>
     <import resource="druid.xml"/>
 
+    <!-- 配置SpringMVC @RequestBody和@ResponseBody 注解 -->
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="jsonHttpMessageConverter" />
+            </list>
+        </property>
+    </bean>
+    <bean id="jsonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>application/json;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+
 </beans>
