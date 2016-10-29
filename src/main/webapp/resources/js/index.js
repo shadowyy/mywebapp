@@ -10,7 +10,7 @@ $(function () {
     $.ajax({
         type: "GET",
         url: "/mywebapp/list/queryUser",
-        data: data,
+        data: JSON.stringify(data),
         contentType: "application/json;charset=UTF-8",
         dataType: "json",
         success: function (json) {

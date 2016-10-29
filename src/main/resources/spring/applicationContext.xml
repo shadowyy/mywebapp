@@ -6,6 +6,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <import resource="mybatis-spring.xml"/>
-    <import resource="druid.xml"/>
+    <!--<import resource="druid.xml"/>-->
+    <import resource="fastjson.xml"/>
 
 </beans>
