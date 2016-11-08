@@ -12,9 +12,6 @@ import java.util.Date;
 import java.util.List;
 
 
-/**
- * Created by alice on 2016/10/10.
- */
 @Controller
 @RequestMapping("/list")
 public class UserController {
@@ -41,7 +38,7 @@ public class UserController {
         return user;
     }
 
-    @RequestMapping(value = "/queryUser", method = RequestMethod.GET)
+    @RequestMapping(value = "/queryUser", method = {RequestMethod.GET,RequestMethod.POST})
     @ResponseBody
     public User queryUserById(@RequestBody User user) {
         return userServiceImpl.queryUserById(user.getId());
