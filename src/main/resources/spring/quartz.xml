@@ -24,7 +24,7 @@
         <property name="concurrent" value="false"/>
     </bean>
 
-    <!--  调度触发器 -->
+    <!--调度触发器-->
     <bean id="myTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <!-- jobDetail是Spring定时器的特殊属性 -->
         <property name="jobDetail" ref="jobDetail"/>
@@ -34,7 +34,7 @@
         </property>
     </bean>
 
-    <!-- 调度工厂 -->
+    <!--调度工厂-->
     <bean id="schedulerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" autowire="no"
           lazy-init="false">
         <property name="triggers">

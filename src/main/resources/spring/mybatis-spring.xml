@@ -7,6 +7,8 @@
 
     <context:component-scan base-package="com.shadow.dao" />
 
+    <import resource="druid.xml"/>
+
     <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
@@ -25,6 +27,7 @@
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" />
     </bean>
+
 
     <!--&lt;!&ndash; 引入配置文件 &ndash;&gt;-->
     <!--<bean id="propertyConfigurer"  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->

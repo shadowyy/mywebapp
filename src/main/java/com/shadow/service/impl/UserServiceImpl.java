@@ -8,9 +8,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
-/**
- * Created by alice on 201/10/27.
- */
 @Service
 public class UserServiceImpl implements IUserService {
     @Resource
@@ -21,4 +18,8 @@ public class UserServiceImpl implements IUserService {
         return userDao.queryUserById(id);
     }
 
+    @Override
+    public User queryUser(User user) {
+        return userDao.queryUser(user);
+    }
 }

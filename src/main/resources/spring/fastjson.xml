@@ -7,7 +7,6 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <!--告知Spring，我们启用注解驱动-->
     <!-- 启用默认配置 -->
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="true">

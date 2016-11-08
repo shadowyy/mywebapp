@@ -8,6 +8,16 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
+    <!--告知Spring，我们启用注解驱动-->
+    <mvc:annotation-driven/>
+
+    <mvc:annotation-driven validator="validator"/>
+
+    <!-- 数据验证 Validator bean -->
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass" value="org.apache.bval.jsr.ApacheValidationProvider" />
+    </bean>
+
     <!-- 使用注解的包，包括子集 -->
     <!--<context:component-scan base-package="com.shadow.controller"/>-->
     <!--<context:component-scan base-package="com.shadow.service"/>-->
@@ -19,7 +29,7 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
     </context:component-scan>
 
-    <!--<mvc:resources mapping="/resources/**" location="/resources/" />-->
+    <!--<mvc:resources mapping="/resources/**" location="/" />-->
 
     <!-- velocity配置 -->
     <bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">

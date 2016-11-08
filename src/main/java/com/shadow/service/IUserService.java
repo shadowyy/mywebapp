@@ -10,4 +10,6 @@ public interface IUserService {
 
     User queryUserById(int id);
 
+    User queryUser(User user);
+
 }

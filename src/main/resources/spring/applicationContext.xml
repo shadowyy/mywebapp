@@ -6,7 +6,6 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <import resource="mybatis-spring.xml"/>
-    <!--<import resource="druid.xml"/>-->
     <import resource="fastjson.xml"/>
 
     <!-- 配置SpringMVC @RequestBody和@ResponseBody 注解 -->
