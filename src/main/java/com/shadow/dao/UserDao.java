@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface UserDao {
     User queryUserById(int id);
 
-    User queryUser(@Param("user") User user);
+    User queryUser(User user);
 }
