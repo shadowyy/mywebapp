@@ -19,7 +19,7 @@ $(function () {
             type: "POST",
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
-            url: "/list/testValid",
+            url: "/list/queryUser",
             data: JSON.stringify($.extend(data, $('form').serializeObject())),
             success: function (json) {
                 if (json.flag) {

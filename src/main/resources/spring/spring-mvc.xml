@@ -20,6 +20,7 @@
         <property name="providerClass" value="org.apache.bval.jsr.ApacheValidationProvider" />
     </bean>
 
+    <!--true基于类的代理，false是标准的JDK基于接口的代理-->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
     <bean id="caFaceAuthAspect" class="com.shadow.aop.LogAspect"/>
 

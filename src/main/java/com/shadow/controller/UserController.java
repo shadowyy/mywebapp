@@ -42,16 +42,16 @@ public class UserController {
         return user;
     }
 
-    @RequestMapping(value = "/queryUser", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/queryUserById", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public User queryUserById(@RequestBody User user) {
         return userServiceImpl.queryUserById(user.getId());
     }
 
 
-    @RequestMapping(value = "/testValid", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/queryUser", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
-    public JsonResult testValid(@RequestBody @Valid User user, BindingResult result) {
+    public JsonResult queryUser(@RequestBody @Valid User user, BindingResult result) {
         StringBuilder sb = new StringBuilder();
         boolean flag = false;
         if (result.hasErrors()) {

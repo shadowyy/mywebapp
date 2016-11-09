@@ -17,7 +17,7 @@
     <!-- 日志文件输出 -->
     <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!-- 设置日志不超过${log.max.size}时的保存路径，注意如果 是web项目会保存到Tomcat的bin目录 下 -->
-        <File>${log.base}/${log.moduleName}.log</File>
+        <File>${catalina.base}/${log.moduleName}.log</File>
         <!-- 滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件。-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <FileNamePattern>${log.base}/archive/${log.moduleName}_all_%d{yyyy-MM-dd}.%i.log.zip</FileNamePattern>
