@@ -1,5 +1,7 @@
 package com.shadow.domain;
 
+import com.google.common.base.Objects;
+
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -46,5 +48,20 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id &&
+                age == user.age &&
+                Objects.equal(name, user.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id, name, age);
     }
 }

@@ -13,12 +13,10 @@ import java.util.List;
  */
 public class TestBeanCopier {
     public static void main(String[] args) {
-        List<A> listA;
-        List<B> listB;
-        listA = Lists.newArrayList();
-        listB = Lists.newArrayList();
+        List<A> listA= Lists.newArrayList();
+        List<B> listB= Lists.newArrayList();
 
-        BeanCopier<A, B> beanCopier = new SimpleBeanCopier<A, B>(A.class, B.class);
+        BeanCopier<A, B> beanCopier = new SimpleBeanCopier<>(A.class, B.class);
         listB = Lists.transform(listA, beanCopier);
         listA = Lists.transform(listB, beanCopier.reverse());
     }

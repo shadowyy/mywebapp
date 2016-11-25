@@ -45,6 +45,9 @@ public class TestMybatis {
 //		System.out.println("lisa value:" + cahceBuilder.apply("lisa"));
 		cahceBuilder.put("harry", "ssdded");
 		System.out.println("harry value:" + cahceBuilder.get("harry"));
+		User user=new User();
+		User user2=new User();
+		user.equals(user2);
 	}
 
 }
