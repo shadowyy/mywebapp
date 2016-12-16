@@ -1,0 +1,148 @@
+[
+  {
+    "index": 7,
+    "titleName": "等级",
+    "colName": "等级",
+    "mappingType": 0,
+    "type": 3,
+    "constraint": "0,80"
+  },
+  {
+    "index": 8,
+    "titleName": "性别",
+    "colName": "性别",
+    "mappingType": 1,
+    "type": 1
+  },
+  {
+    "index": 9,
+    "titleName": "职业",
+    "colName": "职业",
+    "mappingType": 2,
+    "type": 5
+  },
+  {
+    "index": 10,
+    "titleName": "身份证",
+    "colName": "身份证",
+    "mappingType": 1,
+    "type": 1
+  },
+  {
+    "index": 11,
+    "titleName": "QQ等级",
+    "colName": "QQ等级",
+    "mappingType": 1,
+    "type": 1
+  },
+  {
+    "index": 12,
+    "titleName": "QQ好友",
+    "colName": "QQ好友",
+    "mappingType": 1,
+    "type": 1
+  },
+  {
+    "index": 13,
+    "titleName": "游戏账号",
+    "colName": "游戏账号",
+    "mappingType": 0,
+    "type": 2,
+    "constraint": "0,50"
+  },
+  {
+    "index": 14,
+    "titleName": "游戏密码",
+    "colName": "游戏密码",
+    "mappingType": 0,
+    "type": 2,
+    "constraint": "0,40"
+  },
+  {
+    "index": 15,
+    "titleName": "角色名",
+    "colName": "角色名",
+    "mappingType": 0,
+    "type": 2,
+    "constraint": "0,80"
+  },
+  {
+    "index": 16,
+    "titleName": "身份证号码",
+    "colName": "身份证号码",
+    "mappingType": 0,
+    "type": 4,
+    "constraint": "(^\\d{15}$)|(^\\d{18}$)|(^\\d{17}(\\d|X|x)$)"
+  },
+  {
+    "index": 17,
+    "titleName": "密保问题1",
+    "colName": "密保问题1",
+    "mappingType": 1,
+    "type": 1
+  },
+  {
+    "index": 18,
+    "titleName": "答案1",
+    "colName": "答案1",
+    "mappingType": 0,
+    "type": 2,
+    "constraint": "0,1000"
+  },
+  {
+    "index": 19,
+    "titleName": "密保问题2",
+    "colName": "密保问题2",
+    "mappingType": 1,
+    "type": 1
+  },
+  {
+    "index": 20,
+    "titleName": "答案2",
+    "colName": "答案2",
+    "mappingType": 0,
+    "type": 2,
+    "constraint": "0,1000"
+  },
+  {
+    "index": 21,
+    "titleName": "密保问题3",
+    "colName": "密保问题3",
+    "mappingType": 1,
+    "type": 1
+  },
+  {
+    "index": 22,
+    "titleName": "答案3",
+    "colName": "答案3",
+    "mappingType": 0,
+    "type": 2,
+    "constraint": "0,1000"
+  },
+  {
+    "index": 23,
+    "titleName": "二级密码",
+    "colName": "二级密码",
+    "mappingType": 0,
+    "type": 2,
+    "constraint": "0,100"
+  },
+  {
+    "index": 24,
+    "titleName": "仓库密码",
+    "colName": "仓库密码",
+    "mappingType": 0,
+    "type": 2,
+    "constraint": "0,100"
+  },
+  {
+    "index": 25,
+    "titleName": "是否上传身份证",
+    "colName": "仓库密码",
+    "mappingType": 0,
+    "type": 1,
+    "constraint": "是,否"
+  }
+
+
+]

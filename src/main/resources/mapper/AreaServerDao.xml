@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shadow.dao.AreaServerDao">
+    <resultMap id="areaMap" type="com.shadow.domain.AreaPO">
+        <id column="GROUPID" property="id"/>
+        <result column="GROUPNAME" property="name"/>
+        <collection property="servers" ofType="com.shadow.domain.ServerPO">
+            <result column="GROUPID" property="areaId"/>
+            <result column="SERVERID" property="id"/>
+            <result column="SERVERNAME" property="name"/>
+        </collection>
+    </resultMap>
+
+    <select id="queryAreaServerByGameId" resultMap="areaMap">
+        SELECT DISTINCT GROUPNAME,GROUPID,SERVERNAME,SERVERID FROM VIEW_GAME_GROUPSERVER  WHERE GAMEID = #{gameId}
+        AND GROUPNAME not in ('全区','全区全服') AND SERVERID IS NOT NULL ORDER BY SERVERID
+    </select>
+
+    <select id="getInfo" parameterType="java.lang.String" resultType="com.shadow.domain.TitlePO">
+		SELECT
+             G.gegid,G.gname,G.gameid,G.itemtype,v.ishaveto,E.pid,E.gieid,E.ename,
+             E.edesc,E.etype,E.vtype,E.ecode,E.evalue,E.comparewith,v.ordernum,E.decide
+        FROM
+            sup_game_item_extend_group_v v
+        LEFT JOIN sup_game_item_extend_group G ON v.giegid = G .gegid
+        LEFT JOIN sup_game_item_extend E ON E .gieid = v.gieid
+        WHERE
+            v.giegid IN (
+                SELECT
+                    gegid
+                FROM
+                    sup_game_item_scene_group
+                WHERE
+                    gisid IN (
+                        SELECT
+                            gisid
+                        FROM
+                            sup_game_item_scene
+                        WHERE
+                            gameid = #{gameId}
+                        AND itemtype = '100003'
+                        AND scode = 'NEWGOODS'
+                    )
+            )
+        ORDER BY
+            v.ordernum
+    </select>
+
+</mapper>

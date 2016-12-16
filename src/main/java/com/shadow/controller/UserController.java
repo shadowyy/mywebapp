@@ -1,5 +1,7 @@
 package com.shadow.controller;
 
+import com.shadow.dao.AreaServerDao;
+import com.shadow.dao.PersonDao;
 import com.shadow.domain.User;
 import com.shadow.service.IUserService;
 import com.shadow.vo.JsonResult;
@@ -7,12 +9,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -21,6 +27,11 @@ import java.util.List;
 public class UserController {
     @Resource
     private IUserService userServiceImpl;
+
+    @Resource
+    private PersonDao personDao;
+    @Resource
+    private AreaServerDao areaServerDao;
 
     @RequestMapping("/users")
     public String users(ModelMap model) {
@@ -38,7 +49,7 @@ public class UserController {
         User user = new User();
         user.setName(name);
         user.setId(1);
-        user.setAge(20);
+        user.setAge(100);
         return user;
     }
 
@@ -67,5 +78,13 @@ public class UserController {
         return new JsonResult<>(flag, sb.toString(), user);
     }
 
+
+    @RequestMapping("/orders")
+    @ResponseBody
+    public JsonResult orders(@RequestParam int id) {
+//        List<Person>  list=personDao.queryPersonById(id);
+        areaServerDao.queryAreaServerByGameId("G10");
+        return new JsonResult();
+    }
 
 }

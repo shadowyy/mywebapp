@@ -30,7 +30,8 @@
         <property name="jobDetail" ref="jobDetail"/>
         <!-- cronExpression是Spring定时器的特殊属性 -->
         <property name="cronExpression">
-            <value>0/5 * * * * ?</value>
+            <!--<value>0/5 * * * * ?</value>-->
+            <value>0 0 0-6 * * ? *</value>
         </property>
     </bean>
 

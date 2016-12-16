@@ -1,14 +1,22 @@
 package mywebapp;
 
-import com.google.common.base.*;
+import com.google.common.base.Function;
+import com.google.common.base.Functions;
 import com.google.common.base.Objects;
 import com.google.common.collect.ComparisonChain;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Ordering;
 import org.junit.Test;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by alice on 2016/11/16 13:24
@@ -23,6 +31,7 @@ public class TestFunction {
             }
         };
         System.out.println(function.apply(new Date()));
+
     }
 
     @Test
@@ -172,7 +181,7 @@ class Student implements Comparable<Student> {
     }
 }
 
-class StudentComparator implements Comparator<Student> {
+class StudentComparator implements Comparator<Student>, Serializable {
     @Override
     public int compare(Student s1, Student s2) {
         return ComparisonChain.start()

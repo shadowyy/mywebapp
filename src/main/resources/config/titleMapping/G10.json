@@ -1,0 +1,108 @@
+{
+  "等级": {
+    "title": "等级",
+    "mappingType": 0,
+    "type": 3,
+    "constraint": "0,80"
+  },
+  "性别": {
+    "title": "性别",
+    "mappingType": 1,
+    "type": 1
+  },
+  "职业": {
+    "title": "职业",
+    "mappingType": 1,
+    "type": 6
+  },
+  "身份证": {
+    "title": "身份证",
+    "mappingType": 1,
+    "type": 1
+  },
+  "QQ等级": {
+    "title": "QQ等级",
+    "mappingType": 1,
+    "type": 1
+  },
+  "QQ好友": {
+    "title": "QQ好友",
+    "mappingType": 1,
+    "type": 1
+  },
+  "游戏账号": {
+    "title": "账号",
+    "mappingType": 0,
+    "type": 2,
+    "constraint": "0,50"
+  },
+  "游戏密码": {
+    "title": "账号密码",
+    "mappingType": 0,
+    "type": 2,
+    "constraint": "0,40"
+  },
+  "游戏角色名": {
+    "title": "角色名",
+    "mappingType": 0,
+    "type": 2,
+    "constraint": "0,80"
+  },
+  "身份证号码": {
+    "title": "身份证号码",
+    "mappingType": 0,
+    "type": 4,
+    "constraint": "(^\\d{15}$)|(^\\d{18}$)|(^\\d{17}(\\d|X|x)$)"
+  },
+  "密保问题1": {
+    "title": "密保问题1",
+    "mappingType": 1,
+    "type": 1
+  },
+  "答案1": {
+    "title": "答案1",
+    "mappingType": 0,
+    "type": 2,
+    "constraint": "0,1000"
+  },
+  "密保问题2": {
+    "title": "密保问题2",
+    "mappingType": 1,
+    "type": 1
+  },
+  "答案2": {
+    "title": "答案2",
+    "mappingType": 0,
+    "type": 2,
+    "constraint": "0,1000"
+  },
+  "密保问题3": {
+    "title": "密保问题3",
+    "mappingType": 1,
+    "type": 1
+  },
+  "答案3": {
+    "title": "答案3",
+    "mappingType": 0,
+    "type": 2,
+    "constraint": "0,1000"
+  },
+  "二级密码": {
+    "title": "二级密码",
+    "mappingType": 0,
+    "type": 2,
+    "constraint": "0,100"
+  },
+  "仓库密码": {
+    "title": "仓库密码",
+    "mappingType": 0,
+    "type": 2,
+    "constraint": "0,100"
+  },
+  "上传身份证": {
+    "title": "是否上传身份证",
+    "mappingType": 0,
+    "type": 1,
+    "constraint": "是,否"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "common": [
+    {
+      "index": 0,
+      "title": "游戏名称",
+      "necessary": true,
+      "type": 1,
+      "constraint": "地下城与勇士"
+    },
+    {
+      "index": 1,
+      "title": "游戏区",
+      "necessary": true,
+      "type": 2,
+      "constraint": "5"
+    },
+    {
+      "index": 2,
+      "title": "游戏服",
+      "necessary": true,
+      "type": 2,
+      "constraint": "5"
+    },
+    {
+      "index": 3,
+      "title": "游戏区",
+      "necessary": true,
+      "type": 2,
+      "constraint": "5"
+    },
+    {
+      "index": 4,
+      "title": "商品标题",
+      "necessary": true,
+      "type": 2,
+      "constraint": "5"
+    },
+    {
+      "index": 5,
+      "title": "商品价格",
+      "necessary": true,
+      "type": 2,
+      "constraint": "5"
+    },
+    {
+      "index": 6,
+      "title": "商品描述",
+      "necessary": true,
+      "type": 2,
+      "constraint": "5"
+    }
+  ],
+  "G10": [
+
+
+  ],
+  "G479": [],
+  "G603": []
+}
