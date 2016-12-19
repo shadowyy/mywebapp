@@ -3,11 +3,15 @@ package mywebapp;
 import org.apache.poi.hssf.usermodel.DVConstraint;
 import org.apache.poi.hssf.usermodel.HSSFDataValidation;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DataValidation;
+import org.apache.poi.ss.usermodel.Name;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.CellRangeAddressList;
 import org.apache.poi.ss.util.CellReference;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -23,9 +27,10 @@ public class TestExcel {
     private static final String HIDE_SHEET = "hideSheet";
 
 
+    @SuppressWarnings("DMI_HARDCODED_ABSOLUTE_FILENAME")
     public static void main(String[] args) {
 
-        final String SEX= "性别";
+        final String SEX = "性别";
         List<String[]> sexList = new ArrayList<>();
         String[] sex = {SEX, "男", "女"};
         String[] male = {"男", "鬼剑士", "格斗家", "神枪手", "魔法师", "圣职者", "黑暗武士", "魔枪士", "剑魂", "剑圣", "剑神", "散打", "武极", "极武皇", "漫游枪手", "枪神", "掠天之翼", "元素爆破师", "魔皇", "湮灭之瞳", "圣骑士", "天启者", "神思者", "决战者", "无双之魂", "圣武枪魂", "狂战士", "狱血魔神", "帝血弑天", "柔道家", "风林火山", "宗师", "弹药专家", "大将军", "战场 统治者", "冰结师", "冰冻之心", "刹那永恒", "蓝拳使者", "神之手", "正义仲裁者", "征战者", "战魂", "不灭战魂", "阿修罗", "大暗黑天", "天帝", "街霸", "千手罗汉", "暗街之王", "枪炮师", "狂暴者", "毁灭者", "驱魔师", "龙斗士", "真龙星君", "鬼泣", "弑魂 ", "黑暗君主", "气功师", "猛虎帝", "念皇", "机械师", "机械战神", "机械元首", "复仇者", "末日审判者", "永生者"};
@@ -35,7 +40,7 @@ public class TestExcel {
         sexList.add(female);
 
 
-        final String PROVINCE= "省份";
+        final String PROVINCE = "省份";
         List<String[]> provList = new ArrayList<>();
         String[] pList = {PROVINCE, "江苏", "浙江", "山东"};
         String[] jsList = {"江苏", "南京", "苏州", "扬州"};
@@ -55,12 +60,12 @@ public class TestExcel {
         createHiddenSheet(workbook, sheet, sexList, 0);
         createHiddenSheet(workbook, sheet, provList, sexList.size());
 
-        setDataValidation(workbook,SEX, 2, new int[]{1, 2});
-        setDataValidation(workbook,PROVINCE, 2, new int[]{3, 4});
+        setDataValidation(workbook, SEX, 2, new int[]{1, 2});
+        setDataValidation(workbook, PROVINCE, 2, new int[]{3, 4});
 
 
         //输出
-        FileOutputStream fOut;
+        FileOutputStream fOut = null;
         try {
             fOut = new FileOutputStream(outputFile);
             workbook.write(fOut);
@@ -68,11 +73,17 @@ public class TestExcel {
             fOut.close();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                fOut.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
 
-    private static void setDataValidation(Workbook wb,String str, int startRow, int[] cols) {
+    private static void setDataValidation(Workbook wb, String str, int startRow, int[] cols) {
         int sheetIndex = wb.getNumberOfSheets();
         String[] colNames = getColName(cols);
         if (sheetIndex > 0) {
@@ -128,7 +139,7 @@ public class TestExcel {
             name.setNameName(strArr[0]);
             name.setRefersToFormula(MessageFormat.format(HIDE_SHEET + "!${0}${1}:${2}${3}", convertNumToColString(1), i, convertNumToColString(end - 1), i));
         }
-        return  list.get(0)[0];
+        return list.get(0)[0];
     }
 
 

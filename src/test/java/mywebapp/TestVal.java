@@ -7,8 +7,6 @@ import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -61,9 +59,9 @@ public class TestVal {
                     break;
                 case 3://数字范围限制
                     String[] range = constraint.split(",");
-                    min = Integer.valueOf(range[0]);
-                    max = Integer.valueOf(range[1]);
-                    int val = Integer.valueOf(value);
+                    min = Integer.parseInt(range[0]);
+                    max = Integer.parseInt(range[1]);
+                    int val = Integer.parseInt(value);
                     if (val > max || val < min) {
                         msgList.add(title + tmp + "数字在" + min + "~" + max + "范围内");
                         continue;
@@ -121,14 +119,18 @@ public class TestVal {
         File file = new File(fileName);
         Long filelength = file.length();
         byte[] filecontent = new byte[filelength.intValue()];
+        FileInputStream in=null;
         try {
-            FileInputStream in = new FileInputStream(file);
+            in = new FileInputStream(file);
             in.read(filecontent);
-            in.close();
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } finally {
+            try {
+                in.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         try {
             return new String(filecontent, encoding);

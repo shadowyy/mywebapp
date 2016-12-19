@@ -31,13 +31,14 @@ class NumObservable extends Observable {
         this.data = data;
         setChanged();
         notifyObservers();
+
     }
 }
 
 /**
  * 观察者
  */
-@SuppressWarnings("unchecked")
+@SuppressWarnings({"unchecked"})
 class NumObserver implements Observer {
     @Override
     public void update(Observable o, Object arg) {

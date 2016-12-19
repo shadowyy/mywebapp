@@ -28,6 +28,7 @@ public class TestExcelDataValidation {
     public static final String outputFile = "d:/test.xls "; // 生成的文件
     private static final String HIDE_SHEET = "hideSheet";
 
+    @SuppressWarnings("DMI_HARDCODED_ABSOLUTE_FILENAME")
     public static void main(String[] args) {
         List<CellTemplate> list = JSON.parseArray(ReadFile.toString("/json/others/cellTemplate.json"), CellTemplate.class);
         Workbook wb = new HSSFWorkbook();
@@ -51,7 +52,7 @@ public class TestExcelDataValidation {
         }
 
         //输出
-        FileOutputStream fOut;
+        FileOutputStream fOut = null;
         try {
             fOut = new FileOutputStream(outputFile);
             wb.write(fOut);
@@ -59,6 +60,12 @@ public class TestExcelDataValidation {
             fOut.close();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                fOut.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
 
@@ -67,6 +74,7 @@ public class TestExcelDataValidation {
 
     /**
      * 关联下拉需要先写数据字典
+     *
      * @param workbook
      * @param sheet
      * @param list
@@ -96,6 +104,7 @@ public class TestExcelDataValidation {
 
     /**
      * 设置约束
+     *
      * @param formulaString      下拉值
      * @param naturalRowIndex    行index
      * @param naturalColumnIndex 列index

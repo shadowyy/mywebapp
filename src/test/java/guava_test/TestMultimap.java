@@ -34,15 +34,15 @@ public class TestMultimap {
         System.out.println(Sets.intersection(setA, setB));//交集[4, 5]
 
 
-//        MapDifference differenceMap = Maps.difference(mapA, mapB);
-//        differenceMap.areEqual();
-//        Map entriesDiffering = differenceMap.entriesDiffering();
-//        Map entriesOnlyOnLeft = differenceMap.entriesOnlyOnLeft();
-//        Map entriesOnlyOnRight = differenceMap.entriesOnlyOnRight();
-//        Map entriesInCommon = differenceMap.entriesInCommon();
+       // MapDifference differenceMap = Maps.difference(mapA, mapB);
+       // differenceMap.areEqual();
+       // Map entriesDiffering = differenceMap.entriesDiffering();
+       // Map entriesOnlyOnLeft = differenceMap.entriesOnlyOnLeft();
+       // Map entriesOnlyOnRight = differenceMap.entriesOnlyOnRight();
+       // Map entriesInCommon = differenceMap.entriesInCommon();
 
         //验证与条件检查
-        int count=1;
+        int count = 1;
         if (count <= 0) {
             throw new IllegalArgumentException("must be positive: " + count);
         }
