@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.shadow.domain.TitleMapping;
 import com.shadow.domain.TitlePO;
-import com.shadow.utils.ReadFile;
+import com.shadow.utils.ReadFileUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
@@ -28,13 +28,13 @@ public class TestGetJson {
 
         String game = "G479.json";
         //数据库表数据
-        List<TitlePO> titlePOList = JSON.parseObject(ReadFile.toString("/config/titlePO/" + game), new TypeReference<List<TitlePO>>() {
+        List<TitlePO> titlePOList = JSON.parseObject(ReadFileUtil.toString("/config/titlePO/" + game), new TypeReference<List<TitlePO>>() {
         });
         //映射规则
-        Map<String, TitleMapping> titleMappingMap = JSON.parseObject(ReadFile.toString("/config/titleMapping/" + game), new TypeReference<LinkedHashMap<String, TitleMapping>>() {
+        Map<String, TitleMapping> titleMappingMap = JSON.parseObject(ReadFileUtil.toString("/config/titleMapping/" + game), new TypeReference<LinkedHashMap<String, TitleMapping>>() {
         });
         //excel数据
-        Map<String, String> excelDataList = JSON.parseObject(ReadFile.toString("/config/excelData/" + game), new TypeReference<LinkedHashMap<String, String>>() {
+        Map<String, String> excelDataList = JSON.parseObject(ReadFileUtil.toString("/config/excelData/" + game), new TypeReference<LinkedHashMap<String, String>>() {
         });
 
         for (TitlePO t : titlePOList) {

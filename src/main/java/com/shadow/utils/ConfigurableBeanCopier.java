@@ -1,6 +1,7 @@
 package com.shadow.utils;
 
 /**
+ * 
  * Created by madness on 2016/11/16 0:08
  */
 @SuppressWarnings("unchecked")

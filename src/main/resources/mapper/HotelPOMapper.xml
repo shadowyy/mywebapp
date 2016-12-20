@@ -36,16 +36,119 @@
         <result column="Family" jdbcType="VARCHAR" property="family"/>
         <result column="Version" jdbcType="VARCHAR" property="version"/>
     </resultMap>
+
     <sql id="Base_Column_List">
         id, name, CardNo, Descriot, CtfTp, CtfId, Gender, Birthday, address, Zip, Dirty,
         District1, District2, District3, District4, District5, District6, FirstNm, LastNm,
         Duty, Mobile, Tel, Fax, EMail, Nation, Taste, Education, Company, CTel, CAddress,
         CZip, Family, Version
     </sql>
+
     <select id="query" parameterType="com.shadow.domain.HotelPO" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from hotel
-        where id = #{id,jdbcType=INTEGER}
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=INTEGER}
+            </if>
+            <if test="name != null">
+                AND name = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="cardno != null">
+                AND CardNo = #{cardno,jdbcType=VARCHAR}
+            </if>
+            <if test="descriot != null">
+                AND Descriot = #{descriot,jdbcType=VARCHAR}
+            </if>
+            <if test="ctftp != null">
+                AND CtfTp = #{ctftp,jdbcType=VARCHAR}
+            </if>
+            <if test="ctfid != null">
+                AND CtfId = #{ctfid,jdbcType=VARCHAR}
+            </if>
+            <if test="gender != null">
+                AND Gender = #{gender,jdbcType=VARCHAR}
+            </if>
+            <if test="birthday != null">
+                AND Birthday = #{birthday,jdbcType=VARCHAR}
+            </if>
+            <if test="address != null">
+                AND address = #{address,jdbcType=VARCHAR}
+            </if>
+            <if test="zip != null">
+                AND Zip = #{zip,jdbcType=VARCHAR}
+            </if>
+            <if test="dirty != null">
+                AND AND Dirty = #{dirty,jdbcType=VARCHAR}
+            </if>
+            <if test="district1 != null">
+                AND District1 = #{district1,jdbcType=VARCHAR}
+            </if>
+            <if test="district2 != null">
+                AND District2 = #{district2,jdbcType=VARCHAR}
+            </if>
+            <if test="district3 != null">
+                AND District3 = #{district3,jdbcType=VARCHAR}
+            </if>
+            <if test="district4 != null">
+                AND District4 = #{district4,jdbcType=VARCHAR}
+            </if>
+            <if test="district5 != null">
+                AND District5 = #{district5,jdbcType=VARCHAR}
+            </if>
+            <if test="district6 != null">
+                AND District6 = #{district6,jdbcType=VARCHAR}
+            </if>
+            <if test="firstnm != null">
+                AND FirstNm = #{firstnm,jdbcType=VARCHAR}
+            </if>
+            <if test="lastnm != null">
+                AND LastNm = #{lastnm,jdbcType=VARCHAR}
+            </if>
+            <if test="duty != null">
+                AND Duty = #{duty,jdbcType=VARCHAR}
+            </if>
+            <if test="mobile != null">
+                AND Mobile = #{mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="tel != null">
+                AND Tel = #{tel,jdbcType=VARCHAR}
+            </if>
+            <if test="fax != null">
+                AND Fax = #{fax,jdbcType=VARCHAR}
+            </if>
+            <if test="email != null">
+                AND EMail = #{email,jdbcType=VARCHAR}
+            </if>
+            <if test="nation != null">
+                AND Nation = #{nation,jdbcType=VARCHAR}
+            </if>
+            <if test="taste != null">
+                AND Taste = #{taste,jdbcType=VARCHAR}
+            </if>
+            <if test="education != null">
+                AND Education = #{education,jdbcType=VARCHAR}
+            </if>
+            <if test="company != null">
+                AND Company = #{company,jdbcType=VARCHAR}
+            </if>
+            <if test="ctel != null">
+                AND CTel = #{ctel,jdbcType=VARCHAR}
+            </if>
+            <if test="caddress != null">
+                AND CAddress = #{caddress,jdbcType=VARCHAR}
+            </if>
+            <if test="czip != null">
+                AND CZip = #{czip,jdbcType=VARCHAR}
+            </if>
+            <if test="family != null">
+                AND Family = #{family,jdbcType=VARCHAR}
+            </if>
+            <if test="version != null">
+                AND Version = #{version,jdbcType=VARCHAR}
+            </if>
+        </where>
     </select>
+
 </mapper>

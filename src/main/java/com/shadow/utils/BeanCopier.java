@@ -9,10 +9,6 @@ import com.google.common.base.Function;
 public class BeanCopier<F, T> implements Function<F, T> {
     private net.sf.cglib.beans.BeanCopier beanCopier;
 
-    protected net.sf.cglib.beans.BeanCopier getBeanCopier() {
-        return beanCopier;
-    }
-
     protected void init() {
         this.beanCopier = net.sf.cglib.beans.BeanCopier.create(sourceClass, targetClass, false);
     }

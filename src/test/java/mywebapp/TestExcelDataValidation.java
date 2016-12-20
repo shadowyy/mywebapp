@@ -2,7 +2,7 @@ package mywebapp;
 
 import com.alibaba.fastjson.JSON;
 import com.shadow.domain.CellTemplate;
-import com.shadow.utils.ReadFile;
+import com.shadow.utils.ReadFileUtil;
 import org.apache.poi.hssf.usermodel.DVConstraint;
 import org.apache.poi.hssf.usermodel.HSSFDataValidation;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -30,7 +30,7 @@ public class TestExcelDataValidation {
 
     @SuppressWarnings("DMI_HARDCODED_ABSOLUTE_FILENAME")
     public static void main(String[] args) {
-        List<CellTemplate> list = JSON.parseArray(ReadFile.toString("/json/others/cellTemplate.json"), CellTemplate.class);
+        List<CellTemplate> list = JSON.parseArray(ReadFileUtil.toString("/json/others/cellTemplate.json"), CellTemplate.class);
         Workbook wb = new HSSFWorkbook();
         Sheet firstSheet = wb.createSheet("firstSheet");
 //        Sheet hideSheet = wb.createSheet(HIDE_SHEET);

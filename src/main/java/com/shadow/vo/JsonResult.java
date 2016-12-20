@@ -17,8 +17,12 @@ public class JsonResult<T> {
         this.data = data;
     }
 
-    public static <T> JsonResult newIns(boolean flag, String msg, T data) {
-        return new JsonResult<>(flag, msg, data);
+    public static <T> JsonResult success(T data) {
+        return new JsonResult<>(true, null, data);
+    }
+
+    public static <T> JsonResult fail(String msg, T data) {
+        return new JsonResult<>(false, msg, data);
     }
 
     public boolean isFlag() {

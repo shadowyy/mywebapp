@@ -1,6 +1,9 @@
 package com.shadow.dao;
 
 import com.shadow.domain.HotelPO;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * hotel
@@ -8,6 +11,7 @@ import com.shadow.domain.HotelPO;
  * @author yy
  * @version 2016/12/20 18:52
  */
+@Repository
 public interface HotelDao {
-    HotelPO query(HotelPO hotelPO);
+    List<HotelPO> query(HotelPO hotelPO);
 }

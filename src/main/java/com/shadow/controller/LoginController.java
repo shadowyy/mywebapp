@@ -42,9 +42,9 @@ public class LoginController {
             error = "其他错误：" + e.getMessage();
         }
         if (error != null) {// 出错了，返回登录页面
-            return JsonResult.newIns(true,"","");
+            return JsonResult.success(null);
         } else {// 登录成功
-            return JsonResult.newIns(false,"","");
+            return JsonResult.fail(null, null);
         }
 
     }

@@ -20,7 +20,7 @@
         </javaTypeResolver>
 
         <!-- 生成模型的包名和位置 -->
-        <javaModelGenerator targetPackage="com.shadow.domain" targetProject="${gen_java}">
+        <javaModelGenerator targetPackage="com.shadow.gen" targetProject="${gen_java}">
             <!-- 是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="true"/>
             <!--set的时候是否去除尾部空格 -->
@@ -28,12 +28,12 @@
         </javaModelGenerator>
 
         <!-- 生成映射文件的包名和位置 -->
-        <sqlMapGenerator targetPackage="mapper" targetProject="${gen_resources}">
+        <sqlMapGenerator targetPackage="gen" targetProject="${gen_resources}">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!-- 生成DAO的包名和位置 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.shadow.dao" targetProject="${gen_java}">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.shadow.gen" targetProject="${gen_java}">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 

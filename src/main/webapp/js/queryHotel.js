@@ -3,9 +3,10 @@
  */
 $(function () {
     var getData = function () {
-        $.postJson("/list/queryUser", $('form').serializeObject(), function (json) {
+        $.postJson("/hotel/query", $('form').serializeObject(), function (json) {
             if (json.flag) {
-                $('#info').html(JSON.stringify(json.data));
+                json.data;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                $('#table_hotel').DataTable();
             } else {
                 layer.msg(json.msg);
             }

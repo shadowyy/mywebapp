@@ -18,7 +18,7 @@ $.fn.serializeObject = function () {
     return o;
 };
 
-$.fn.postJson = function (url, data, success) {
+$.postJson = function (url, data, success) {
     $.ajax({
         type: "POST",
         contentType: "application/json;charset=UTF-8",

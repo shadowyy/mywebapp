@@ -1,7 +1,9 @@
 package com.shadow.controller;
 
-import com.shadow.dao.HotelDao;
-import com.shadow.domain.HotelPO;
+import com.shadow.service.IHotelService;
+import com.shadow.vo.HotelVO;
+import com.shadow.vo.JsonResult;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,14 +17,15 @@ import javax.annotation.Resource;
  * @author yy
  * @version 2016/12/20 18:47
  */
+@Controller
 @RequestMapping("/hotel")
 public class HotelController {
     @Resource
-    HotelDao hotelDao;
+    IHotelService hotelService;
 
     @RequestMapping(value = "/query", method = {RequestMethod.POST})
     @ResponseBody
-    public HotelPO getJson(@RequestBody HotelPO hotelPO) {
-        return hotelDao.query(hotelPO);
+    public JsonResult getJson(@RequestBody HotelVO hotelVO) {
+        return JsonResult.success(hotelService.query(hotelVO));
     }
 }
