@@ -6,7 +6,8 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
-import static com.shadow.constant.UserConstant.*;
+import static com.shadow.constant.UserConstant.MAX_AGE;
+import static com.shadow.constant.UserConstant.MIN_AGE;
 
 public class User {
     private int id;
@@ -16,6 +17,7 @@ public class User {
     @Min(value = MIN_AGE, message = "年龄最小不能低于" + MIN_AGE + "岁")
     @Digits(integer = 3, fraction = 0, message = "年龄应该为整数")
     private int age;
+    private String pwd;
 
     public User() {
     }
@@ -24,6 +26,14 @@ public class User {
         this.id = id;
         this.name = name;
         this.age = age;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
     }
 
     public int getId() {

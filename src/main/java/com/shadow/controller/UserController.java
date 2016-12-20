@@ -2,6 +2,7 @@ package com.shadow.controller;
 
 import com.shadow.dao.AreaServerDao;
 import com.shadow.dao.PersonDao;
+import com.shadow.domain.Person;
 import com.shadow.domain.User;
 import com.shadow.service.IUserService;
 import com.shadow.vo.JsonResult;
@@ -30,6 +31,7 @@ public class UserController {
 
     @Resource
     private PersonDao personDao;
+
     @Resource
     private AreaServerDao areaServerDao;
 
@@ -82,8 +84,8 @@ public class UserController {
     @RequestMapping("/orders")
     @ResponseBody
     public JsonResult orders(@RequestParam int id) {
-//        List<Person>  list=personDao.queryPersonById(id);
-        areaServerDao.queryAreaServerByGameId("G10");
+        List<Person> list = personDao.queryPersonById(id);
+        // areaServerDao.queryAreaServerByGameId("G10");
         return new JsonResult();
     }
 

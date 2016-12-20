@@ -317,10 +317,6 @@
                         <goals>
                             <goal>inplace</goal>
                         </goals>
-                        <!-- 配置是否被传播到子POM -->
-                        <!--<inherited />-->
-                        <!-- 作为DOM对象的配置 -->
-                        <!--<configuration />-->
                     </execution>
                 </executions>
                 <configuration>

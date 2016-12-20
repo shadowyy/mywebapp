@@ -17,6 +17,10 @@ public class JsonResult<T> {
         this.data = data;
     }
 
+    public static <T> JsonResult newIns(boolean flag, String msg, T data) {
+        return new JsonResult<>(flag, msg, data);
+    }
+
     public boolean isFlag() {
         return flag;
     }
