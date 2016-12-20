@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>queryHotel</title>
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
-    <link href="/lib/bootstrap/3.3.7/css/bootstrap.css" type="text/css"/>
-    <link href="/lib/dataTables/1.10.13/css/jquery.dataTables.css" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="/lib/bootstrap/3.3.7/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/lib/dataTables/1.10.13/css/jquery.dataTables.css"/>
     <script src="/lib/jquery/1.11.3/jquery.js"></script>
     <script src="/lib/bootstrap/3.3.7/js/bootstrap.js"></script>
     <script src="/lib/layer/layer.js"></script>
@@ -56,24 +56,26 @@
 <button type="submit">submit</button>
 <button type="reset">reset</button>
 <br>
-<table id="table_hotel" class="display">
-    <thead>
-        <tr>
-            <th>Column 1</th>
-            <th>Column 2</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Row 1 Data 1</td>
-            <td>Row 1 Data 2</td>
-        </tr>
-        <tr>
-            <td>Row 2 Data 1</td>
-            <td>Row 2 Data 2</td>
-        </tr>
-    </tbody>
-</table>
+
+    <div class="row-fluid" style="margin-top: 20px">
+    <div class="span1"></div>
+    <div class="span10">
+
+        <table id="table_local" class="row-border hover order-column" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>教师编号</th>
+                <th>姓名</th>
+                <th>组织机构</th>
+                <th>课程类型</th>
+                <th>课程名称</th>
+                <th>总得分</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
 </body>
 <script src="/js/patch.js"></script>
 <script src="/js/queryHotel.js"></script>
