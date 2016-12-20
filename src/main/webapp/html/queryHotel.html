@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>queryHotel</title>
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+    <link href="/lib/bootstrap/3.3.7/css/bootstrap.css" type="text/css"/>
+    <script src="/lib/jquery/1.11.3/jquery.js"></script>
+    <script src="/lib/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script src="/lib/layer/layer.js"></script>
+</head>
+<body>
+<form>
+    <p>姓名<input name="name" type="text"/></p>
+    <p>性别
+        <label><input name="sex" type="radio" value="" checked/>不限制</label>
+        <label><input name="sex" type="radio" value="M"/>男</label>
+        <label><input name="sex" type="radio" value="F"/>女</label>
+    </p>
+    <p>证件类型
+        <select name="CtfTp">
+            <option value="OTH">OTH</option>
+            <option value="GID">GID</option>
+            <option value="ID">身份证</option>
+            <option value="待定">待定</option>
+            <option value="TBZ">TBZ</option>
+            <option value="VSA">VSA</option>
+            <option value="TXZ">TXZ</option>
+            <option value="JID">JID</option>
+            <option value="JZ">JZ</option>
+            <option value="HXZ">HXZ</option>
+            <option value="JLZ">JLZ</option>
+            <option value="hvz">hvz</option>
+            <option value="JZ1">JZ1</option>
+            <option value="SBZ">SBZ</option>
+            <option value="JGZ">JGZ</option>
+            <option value="HKB">HKB</option>
+            <option value="TSZ">TSZ</option>
+            <option value="1">1</option>
+            <option value="11">11</option>
+            <option value="''">''</option>
+            <option value="null">null</option>
+        </select>
+    </p>
+    <p>证件号<input name="CtfId" type="text"/></p>
+    <p>手机号<input name="CtfId" type="text"/></p>
+    <p>e-mail<input name="EMail" type="email"/></p>
+    <p>生日<input name="Birthday" type="date"/></p>
+    <p>年龄<input name="age" type="text"/>~<input name="age" type="text"/></p>
+    <p>家庭地址<input name="address" type="text"/></p>
+    <p>入住登记时间<input name="version" type="datetime-local"/></p>
+</form>
+<button type="submit">submit</button>
+<button type="reset">reset</button>
+<div id="info"></div>
+</body>
+<script src="/js/patch.js"></script>
+<script src="/js/index.js"></script>
+</html>

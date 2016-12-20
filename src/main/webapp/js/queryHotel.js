@@ -1,3 +1,6 @@
+/**
+ * Created by yy on 2016/12/20.
+ */
 $(function () {
     var getData = function () {
         $.postJson("/list/queryUser", $('form').serializeObject(), function (json) {
@@ -8,7 +11,5 @@ $(function () {
             }
         });
     };
-    getData();
-    $("button").click(getData);
+    $('button[type="submit"]').click(getData);
 }());
-
