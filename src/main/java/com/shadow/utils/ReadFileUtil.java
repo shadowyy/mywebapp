@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Created by alice on 2016/12/2 20:37
@@ -22,7 +23,9 @@ public class ReadFileUtil {
             in = new FileInputStream(file);
             in.read(byteContent);
             in.close();
-            return new String(byteContent, "UTF-8");
+            // CharEncoding.UTF_8 //String类型
+            // Charsets.UTF_8 //Charset类型
+            return new String(byteContent, StandardCharsets.UTF_8);
         } catch (Exception e) {
             LOGGER.error("ReadFileUtil FileInputStream error:" + e);
             return null;

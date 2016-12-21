@@ -395,7 +395,7 @@
                 <log.root.level>DEBUG</log.root.level>
                 <log.other.level>DEBUG</log.other.level>
                 <log.max.size>100MB</log.max.size>
-                <log.stdout.ref><![CDATA[<appender-ref ref="stdout" />]]></log.stdout.ref>
+                <log.stdout.ref><![CDATA[<appender-ref ref="stdout"/>]]></log.stdout.ref>
             </properties>
         </profile>
     </profiles>
