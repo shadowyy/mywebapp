@@ -304,6 +304,27 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <excludeDefaultDirectories>true</excludeDefaultDirectories>
+                    <filesets>
+                        <fileset>
+                            <directory>${basedir}/src/main/webapp/WEB-INF/</directory>
+                            <includes>
+                                <include>classes/**</include>
+                                <include>lib/**</include>
+                            </includes>
+                            <!--是否跟随符号链接 (symbolic links)-->
+                            <followSymlinks>false</followSymlinks>
+                            <!--默认有些文件是不会被清理的,比如.svn文件,如果设置成false,则全部按照自定义的来处理-->
+                            <useDefaultExcludes>true</useDefaultExcludes>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.0.0</version>
                 <executions>
@@ -334,46 +355,26 @@
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>1.3.3</version>
                 <!--<configuration>-->
-                    <!--&lt;!&ndash;配置文件的位置&ndash;&gt;-->
-                    <!--<configurationFile>src/main/resources/etcs/generatorConfig.xml</configurationFile>-->
-                    <!--<verbose>true</verbose>-->
-                    <!--<overwrite>true</overwrite>-->
+                <!--&lt;!&ndash;配置文件的位置&ndash;&gt;-->
+                <!--<configurationFile>src/main/resources/etcs/generatorConfig.xml</configurationFile>-->
+                <!--<verbose>true</verbose>-->
+                <!--<overwrite>true</overwrite>-->
                 <!--</configuration>-->
                 <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<goals>-->
-                            <!--<goal>generate</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
+                <!--<execution>-->
+                <!--<goals>-->
+                <!--<goal>generate</goal>-->
+                <!--</goals>-->
+                <!--</execution>-->
                 <!--</executions>-->
                 <!--<dependencies>-->
-                    <!--<dependency>-->
-                        <!--<groupId>org.mybatis.generator</groupId>-->
-                        <!--<artifactId>mybatis-generator-core</artifactId>-->
-                        <!--<version>1.3.3</version>-->
-                    <!--</dependency>-->
+                <!--<dependency>-->
+                <!--<groupId>org.mybatis.generator</groupId>-->
+                <!--<artifactId>mybatis-generator-core</artifactId>-->
+                <!--<version>1.3.3</version>-->
+                <!--</dependency>-->
                 <!--</dependencies>-->
             </plugin>
-            <!--<plugin>-->
-            <!--<artifactId>maven-clean-plugin</artifactId>-->
-            <!--<version>3.0.0</version>-->
-            <!--<configuration>-->
-            <!--<filesets>-->
-            <!--<fileset>-->
-            <!--<directory>${basedir}/target</directory>-->
-            <!--<includes>-->
-            <!--<include>maven-status</include>-->
-            <!--<include>generated-sources</include>-->
-            <!--</includes>-->
-            <!--<excludes>-->
-            <!--<exclude>**/important.log</exclude>-->
-            <!--<exclude>**/another-important.log</exclude>-->
-            <!--</excludes>-->
-            <!--<followSymlinks>false</followSymlinks>-->
-            <!--</fileset>-->
-            <!--</filesets>-->
-            <!--</configuration>-->
-            <!--</plugin>-->
         </plugins>
     </build>
     <profiles>
