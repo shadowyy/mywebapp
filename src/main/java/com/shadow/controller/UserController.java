@@ -47,12 +47,11 @@ public class UserController {
 
     @RequestMapping(value = "{name}", method = RequestMethod.GET)
     @ResponseBody
-    public User getJson(@PathVariable String name) {
-        User user = new User();
-        user.setName(name);
-        user.setId(1);
-        user.setAge(100);
-        return user;
+    public JsonResult getJson(@PathVariable String name) throws Exception{
+        if (name.equalsIgnoreCase("on")){
+            Thread.currentThread().sleep(100000);
+        }
+        return JsonResult.success(name);
     }
 
     @RequestMapping(value = "/queryUserById", method = {RequestMethod.GET, RequestMethod.POST})

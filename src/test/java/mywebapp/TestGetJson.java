@@ -24,7 +24,7 @@ public class TestGetJson {
 //        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("spring/mybatis-config.xml"));
 //        SqlSession sqlSession = sqlSessionFactory.openSession();
 //        AreaServerDao areaServerDao = sqlSession.getMapper(AreaServerDao.class);
-//        List<TitlePO> list = areaServerDao.getInfo("G603");
+//        List<TitlePO> set = areaServerDao.getInfo("G603");
 
         String game = "G479.json";
         //数据库表数据
@@ -133,7 +133,7 @@ public class TestGetJson {
 //                    Method method = clazz.getDeclaredMethod(value, String.class);
 //                    boolean b = (boolean) method.invoke(clazz.newInstance(), "");
 //                    if (!b) {
-//                        msgList.add(tmp + title + "错误");
+//                        msgList.addObserver(tmp + title + "错误");
 //                    }
                     break;
                 case 6://使用;和,分隔的限制，如职业

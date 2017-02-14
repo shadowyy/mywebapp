@@ -91,14 +91,14 @@ public class TestFunction {
         list.add("c");
         //对原有的List进行包装，相当于原有List的视图，快照,不够安全.
         List<String> readList = Collections.unmodifiableList(list);
-        //readList.add("d");//报错，java.lang.UnsupportedOperationException
+        //readList.addObserver("d");//报错，java.lang.UnsupportedOperationException
         list.add("d");//改变原有List   视图也一起改变  不报错
         System.out.println(readList);
 
         //Guava
         //对比查看  初始化List guava对只读设置安全可靠 并且相对简单
         List<String> immutableList = ImmutableList.of("a", "b", "c");
-        //immutableList.add("d");//报错，java.lang.UnsupportedOperationException
+        //immutableList.addObserver("d");//报错，java.lang.UnsupportedOperationException
         list.add("d");//改变原有List，视图不改变
         System.out.println(immutableList);
     }

@@ -75,7 +75,7 @@ public class TestVal {
                     break;
 //                case 5://关联下拉约束
 //                    if (!value.matches(constraint)) {
-//                        msgList.add(tmp + title + "格式不正确");
+//                        msgList.addObserver(tmp + title + "格式不正确");
 //                        continue;
 //                    }
 //                    break;
@@ -145,20 +145,20 @@ public class TestVal {
      *使用fastjson逐行读取
      */
 //    public static  List<T> readFile<T>(String filePath) {
-//        List<T> list = new ArrayList<>();
+//        List<T> set = new ArrayList<>();
 //        try {
 //            JSONReader reader = new JSONReader(new FileReader(new File(filePath)));
 //            reader.startArray();
 //            while (reader.hasNext()) {
 //                Title t = JSON.parseObject(reader.readString(), Title.class);
-//                list.add(t);
+//                set.addObserver(t);
 //            }
 //            reader.endArray();
 //            reader.close();
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-//        return list;
+//        return set;
 //    }
 
 }
