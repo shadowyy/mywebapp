@@ -19,4 +19,18 @@
             </if>
         </where>
     </select>
+
+    <insert id="insertBatch">
+        <choose>
+            <when test="list!=null and list.size()>0">
+                INSERT INTO user (name, age) VALUES
+                <foreach collection="list" item="item" index="index" separator=",">
+                    (#{item.name},#{item.age})
+                </foreach>
+            </when>
+            <otherwise>
+                select * from test.user;
+            </otherwise>
+        </choose>
+    </insert>
 </mapper>

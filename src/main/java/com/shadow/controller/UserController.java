@@ -1,5 +1,6 @@
 package com.shadow.controller;
 
+import com.shadow.annotation.BrowseFrequency;
 import com.shadow.dao.AreaServerDao;
 import com.shadow.dao.PersonDao;
 import com.shadow.domain.Person;
@@ -22,7 +23,6 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Controller
 @RequestMapping("/list")
 public class UserController {
@@ -36,6 +36,7 @@ public class UserController {
     private AreaServerDao areaServerDao;
 
     @RequestMapping("/users")
+    @BrowseFrequency("ha")
     public String users(ModelMap model) {
         List<User> list = new ArrayList<>();
         list.add(new User(1, "h", 23));
