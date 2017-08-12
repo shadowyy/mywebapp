@@ -1,6 +1,5 @@
 package javassit;
 
-import com.zeroturnaround.licensing.UserLicense;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
@@ -50,28 +49,28 @@ public class CrackJrebel {
     //
     // private static <T> T deserialize(final InputStream inputStream) {...}
     //
-    // private static <T> T deserialize(byte[] objectData) {...}、
+    // private static <T> T deserialize(byte[] objectData) {...}
 
 
     public static void main(String[] args) throws Exception {
-        UserLicense userLicense = UserLicense.loadInstance(new File("d:/jrebel.lic"));
-        ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(userLicense.getLicense()));
-        Map dataMap = (Map) ois.readObject();
-        System.out.println(dataMap);
-
-
-        //设置启动时的打印注释
-        //dataMap.put("Comment", "*** Use for study only! ***");
-        //设置为商业full版本
-        dataMap.put("commercial", "true");
-
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        ObjectOutputStream oos = new ObjectOutputStream(bos);
-        oos.writeObject(dataMap);
-        byte[] licenseBuf = bos.toByteArray();
-        userLicense.setLicense(licenseBuf);
-        //签名：userLicense.setSignature(signature);
-
-        new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("d:/jrebel-crack.lic"))).writeObject(userLicense);
+        //UserLicense userLicense = UserLicense.loadInstance(new File("d:/jrebel.lic1111"));
+        //ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(userLicense.getLicense()));
+        //Map dataMap = (Map) ois.readObject();
+        //System.out.println(dataMap);
+        //
+        //
+        ////设置启动时的打印注释
+        ////dataMap.put("Comment", "*** Use for study only! ***");
+        ////设置为商业full版本
+        //dataMap.put("commercial", "true");
+        //
+        //ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        //ObjectOutputStream oos = new ObjectOutputStream(bos);
+        //oos.writeObject(dataMap);
+        //byte[] licenseBuf = bos.toByteArray();
+        //userLicense.setLicense(licenseBuf);
+        ////签名：userLicense.setSignature(signature);
+        //
+        //new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("d:/jrebel-crack.lic"))).writeObject(userLicense);
     }
 }
