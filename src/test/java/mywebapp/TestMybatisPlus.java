@@ -22,8 +22,7 @@ public class TestMybatisPlus {
      * 注册机
      * C:\Users\alice\.IntelliJIdea2016.3\config\options\mybatis.xml
      */
-    @Test
-    public void gen() throws Exception {
+    public static void main(String[] args) throws Exception {
         KeyPairGenerator keygen = KeyPairGenerator.getInstance("RSA");
         keygen.initialize(512);
         KeyPair kp = keygen.generateKeyPair();
@@ -35,7 +34,7 @@ public class TestMybatisPlus {
         System.out.println("RESULT:\n" + bytesToHexString(cipher.doFinal("alice".getBytes(Charset.forName("UTF-8")))) + "\n");
     }
 
-    private String bytesToHexString(byte[] src) {
+    private static String bytesToHexString(byte[] src) {
         StringBuilder stringBuilder = new StringBuilder("");
         if (src == null || src.length <= 0) {
             return null;

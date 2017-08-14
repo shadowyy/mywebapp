@@ -29,5 +29,9 @@ public class Main {
         //写入保存
         cc1.writeFile("d:/");
         //jar uvf jrebel.jar com/zeroturnaround/javarebel/tR.class
+
+        CtClass ctClass = pool.get("com.zeroturnaround.javarebel.SDKLicensingImpl");
+        CtMethod ctMethod = ctClass.getDeclaredMethod("c");
+
     }
 }
