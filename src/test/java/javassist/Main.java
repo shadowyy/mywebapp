@@ -1,8 +1,4 @@
-package javassit;
-
-import javassist.ClassPool;
-import javassist.CtClass;
-import javassist.CtMethod;
+package javassist;
 
 /**
  * @author yy
