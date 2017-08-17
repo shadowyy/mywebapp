@@ -3,14 +3,7 @@ package mywebapp;
 import org.apache.poi.util.IOUtils;
 import org.mozilla.universalchardet.UniversalDetector;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 /**
@@ -20,7 +13,11 @@ import java.nio.charset.StandardCharsets;
 public class ChangeLineBreakUtil {
 
     public static void main(String[] args) throws Exception {
-        test1();
+        //test1();
+        //byteArrayToReader();
+
+        //String defaultCharsetName= Charset.defaultCharset().displayName();
+        //System.out.println("defaultCharsetName:"+defaultCharsetName);
     }
 
     private static void test1() throws Exception {
@@ -63,4 +60,27 @@ public class ChangeLineBreakUtil {
         return encoding;
     }
 
+
+    public static void byteArrayToReader() {
+        String str = "1" + "\r\n2" + "\r\n3";
+        byte[] content = str.getBytes();
+        InputStream is = null;
+        BufferedReader bfReader = null;
+        try {
+            is = new ByteArrayInputStream(content);
+            bfReader = new BufferedReader(new InputStreamReader(is));
+            String temp = null;
+            while ((temp = bfReader.readLine()) != null) {
+                System.out.println(temp);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (is != null) is.close();
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+        }
+    }
 }
