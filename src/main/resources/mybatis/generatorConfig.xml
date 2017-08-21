@@ -7,6 +7,10 @@
     <classPathEntry location="${gen_driver}"/>
 
     <context id="DB2Tables" targetRuntime="MyBatis3" defaultModelType="flat">
+        <!--<plugin type="com.shadow.mybtais.DeleteLogicByIdsPlugin"/>-->
+        <plugin type="com.shadow.mybtais.QuerySelectivePlugin"/>
+        <!--<plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>-->
+
         <!-- 是否去除自动生成的注释 -->
         <commentGenerator>
             <property name="suppressAllComments" value="true"/>
@@ -20,7 +24,7 @@
         </javaTypeResolver>
 
         <!-- 生成模型的包名和位置 -->
-        <javaModelGenerator targetPackage="com.shadow.gen" targetProject="${gen_java}">
+        <javaModelGenerator targetPackage="com.shadow.domain" targetProject="${gen_java}">
             <!-- 是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="true"/>
             <!--set的时候是否去除尾部空格 -->
@@ -28,21 +32,21 @@
         </javaModelGenerator>
 
         <!-- 生成映射文件的包名和位置 -->
-        <sqlMapGenerator targetPackage="gen" targetProject="${gen_resources}">
+        <sqlMapGenerator targetPackage="mapper" targetProject="${gen_resources}">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!-- 生成DAO的包名和位置 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.shadow.gen" targetProject="${gen_java}">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.shadow.dao" targetProject="${gen_java}">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
         <!-- tables start-->
-        <table tableName="hotel" domainObjectName="HotelPO" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+        <table tableName="users" domainObjectName="Users" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false">
             <!-- 忽略该字段(可省略) -->
             <!-- <ignoreColumn column="name" /> -->
-            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
         </table>
         <!-- tables end-->
     </context>

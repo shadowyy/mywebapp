@@ -3,31 +3,31 @@
 	  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	  "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<typeAliases>
-		<package name="com.shadow.domain"/>
-	</typeAliases>
-	<!-- 和spring整合后 environments配置将废除-->
-	<environments default="development">
-		<environment id="development">
-			<!-- 使用jdbc事务管理,事务控制由mybatis管理-->
-			<transactionManager type="JDBC" />
-			<!-- 数据库连接池,由mybatis管理-->
+	<!--<typeAliases>-->
+		<!--<package name="com.shadow.domain"/>-->
+	<!--</typeAliases>-->
+	<!--&lt;!&ndash; 和spring整合后 environments配置将废除&ndash;&gt;-->
+	<!--<environments default="development">-->
+		<!--<environment id="development">-->
+			<!--&lt;!&ndash; 使用jdbc事务管理,事务控制由mybatis管理&ndash;&gt;-->
+			<!--<transactionManager type="JDBC" />-->
+			<!--&lt;!&ndash; 数据库连接池,由mybatis管理&ndash;&gt;-->
+			<!--&lt;!&ndash;<dataSource type="POOLED">&ndash;&gt;-->
+				<!--&lt;!&ndash;<property name="driver" value="com.mysql.jdbc.Driver" />&ndash;&gt;-->
+				<!--&lt;!&ndash;<property name="url" value="jdbc:mysql://localhost:3306/test?characterEncoding=utf-8" />&ndash;&gt;-->
+				<!--&lt;!&ndash;<property name="username" value="root" />&ndash;&gt;-->
+				<!--&lt;!&ndash;<property name="password" value="root" />&ndash;&gt;-->
+			<!--&lt;!&ndash;</dataSource>&ndash;&gt;-->
 			<!--<dataSource type="POOLED">-->
-				<!--<property name="driver" value="com.mysql.jdbc.Driver" />-->
-				<!--<property name="url" value="jdbc:mysql://localhost:3306/test?characterEncoding=utf-8" />-->
-				<!--<property name="username" value="root" />-->
-				<!--<property name="password" value="root" />-->
+				<!--<property name="driver" value="oracle.jdbc.driver.OracleDriver" />-->
+				<!--<property name="url" value="jdbc:oracle:thin:@192.168.188.2:1521:db7881" />-->
+				<!--<property name="username" value="liebao7881" />-->
+				<!--<property name="password" value="lbcsdb7881" />-->
 			<!--</dataSource>-->
-			<dataSource type="POOLED">
-				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
-				<property name="url" value="jdbc:oracle:thin:@192.168.188.2:1521:db7881" />
-				<property name="username" value="liebao7881" />
-				<property name="password" value="lbcsdb7881" />
-			</dataSource>
-		</environment>
-	</environments>
-	<!-- 加载映射文件 -->
-	<mappers>
-		<mapper resource="mapper/AreaServerDao.xml"/>
-	</mappers>
+		<!--</environment>-->
+	<!--</environments>-->
+	<!--&lt;!&ndash; 加载映射文件 &ndash;&gt;-->
+	<!--<mappers>-->
+		<!--<mapper resource="mapper/*Mapper.xml"/>-->
+	<!--</mappers>-->
 </configuration>

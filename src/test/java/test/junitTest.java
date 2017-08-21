@@ -18,23 +18,23 @@ import static org.mockito.Mockito.when;
  */
 public class junitTest {
     private JdbcTemplate jdbcTemplate;
+    private static final String COUNT_SQL="select count(*) from test.user";
 
     public int count() {
-        return this.jdbcTemplate.queryForInt("select count(*) from test.user");
+        return this.jdbcTemplate.queryForObject(COUNT_SQL,null,Integer.class);
     }
 
     @Test
     public void method() {
         //setup
         this.jdbcTemplate = mock(JdbcTemplate.class);
-        String sql = "select count(*) from test.user";
-        when(jdbcTemplate.queryForInt(sql)).thenReturn(10);
+        when(jdbcTemplate.queryForObject(COUNT_SQL,null,Integer.class)).thenReturn(10);
 
         //exercise
         int num = count();
 
         //verify
-        verify(jdbcTemplate, times(1)).queryForInt(sql);
+        verify(jdbcTemplate, times(1)).queryForObject(COUNT_SQL,null,Integer.class);
         assertEquals(20, num);
 
         //teardown
