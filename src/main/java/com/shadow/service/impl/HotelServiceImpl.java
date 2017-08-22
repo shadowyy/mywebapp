@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import com.shadow.dao.HotelDao;
 import com.shadow.domain.HotelPO;
 import com.shadow.service.IHotelService;
-import com.shadow.utils.beanCopier.HotelBeanCopier;
+import com.shadow.util.beanCopier.HotelBeanCopier;
 import com.shadow.vo.HotelVO;
 import org.springframework.stereotype.Service;
 

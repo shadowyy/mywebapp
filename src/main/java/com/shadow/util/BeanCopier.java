@@ -1,4 +1,4 @@
-package com.shadow.utils;
+package com.shadow.util;
 
 import com.google.common.base.Function;
 

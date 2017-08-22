@@ -1,4 +1,4 @@
-package com.shadow.utils;
+package com.shadow.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

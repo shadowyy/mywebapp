@@ -5,7 +5,7 @@ import com.github.fge.jackson.JsonLoader;
 import com.github.fge.jsonschema.core.report.ProcessingReport;
 import com.github.fge.jsonschema.main.JsonSchema;
 import com.github.fge.jsonschema.main.JsonSchemaFactory;
-import com.shadow.utils.ReadFileUtil;
+import com.shadow.util.ReadFileUtil;
 
 /**
  * Created by alice on 2016/12/10 16:36

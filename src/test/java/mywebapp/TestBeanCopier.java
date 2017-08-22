@@ -1,8 +1,8 @@
 package mywebapp;
 
 import com.google.common.collect.Lists;
-import com.shadow.utils.BeanCopier;
-import com.shadow.utils.SimpleBeanCopier;
+import com.shadow.util.BeanCopier;
+import com.shadow.util.SimpleBeanCopier;
 
 import javax.annotation.PostConstruct;
 import java.util.Date;

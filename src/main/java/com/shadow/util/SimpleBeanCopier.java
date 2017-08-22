@@ -1,4 +1,4 @@
-package com.shadow.utils;
+package com.shadow.util;
 
 /**
  * Created by madness on 2016/11/16 0:09

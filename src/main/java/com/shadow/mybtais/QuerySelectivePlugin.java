@@ -17,6 +17,7 @@ import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.codegen.mybatis3.ListUtilities;
 import org.mybatis.generator.codegen.mybatis3.MyBatis3FormattingUtilities;
+import org.mybatis.generator.config.Context;
 
 import java.io.File;
 import java.util.List;
@@ -32,6 +33,49 @@ public class QuerySelectivePlugin extends PluginAdapter {
     @Override
     public boolean validate(List<String> warnings) {
         return true;
+    }
+
+    @Override
+    public void setContext(Context context) {
+        super.setContext(context);
+
+        context.getIntrospectedColumnImpl();
+
+        //// 配置插件使用的模板引擎
+        //PluginConfiguration cfg = PluginTools.getPluginConfiguration(context, CommentPlugin.class);
+        //
+        //if (cfg == null || cfg.getProperty(CommentPlugin.PRO_TEMPLATE) == null){
+        //    if (context.getCommentGenerator() instanceof DefaultCommentGenerator){
+        //        // 使用默认模板引擎
+        //        commentGenerator = new TemplateCommentGenerator("default-comment.ftl", true);
+        //    } else {
+        //        // 用户自定义
+        //        commentGenerator = context.getCommentGenerator();
+        //    }
+        //} else {
+        //    TemplateCommentGenerator templateCommentGenerator = new TemplateCommentGenerator(cfg.getProperty(CommentPlugin.PRO_TEMPLATE), false);
+        //
+        //    // ITFSW 插件使用的注释生成器
+        //    commentGenerator = templateCommentGenerator;
+        //
+        //    // 修正系统插件
+        //    try {
+        //        // 先执行一次生成CommentGenerator操作，然后再替换
+        //        context.getCommentGenerator();
+        //
+        //        Field field = Context.class.getDeclaredField("commentGenerator");
+        //        field.setAccessible(true);
+        //        field.set(context, templateCommentGenerator);
+        //    } catch (Exception e) {
+        //        logger.error("反射异常",e);
+        //    }
+        //}
+
+
+    }
+
+    public void initialized(IntrospectedTable introspectedTable) {
+        System.out.println(1);
     }
 
     //public boolean clientInsertSelectiveMethodGenerated(Method method,Interface interfaze, IntrospectedTable introspectedTable) {

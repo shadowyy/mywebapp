@@ -1,7 +1,7 @@
-package com.shadow.utils.beanCopier;
+package com.shadow.util.beanCopier;
 
 import com.shadow.domain.HotelPO;
-import com.shadow.utils.BeanCopier;
+import com.shadow.util.BeanCopier;
 import com.shadow.vo.HotelVO;
 import org.springframework.stereotype.Component;
 
