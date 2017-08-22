@@ -28,36 +28,64 @@ import java.util.List;
 public class TestJavaPoet {
     private static String INDEX = "index";
     private static String SUFFIX_CONTROLLER = "Controller";
-    private static String SERVICEIMPL = "ServiceImpl";
-    private static String MAPPER = "Mapper";
+    private static String SUFFIX_SERVICE_IMPL = "ServiceImpl";
+    private static String SUFFIX_MAPPER = "Mapper";
 
     private static String PACKAGE = "com.shadow";
     private static String DAO = "dao";
-    private static String COMMA = ".";
+    private static String SERVICE_IMPL = "service.impl";
+    private static String POINT = ".";
 
     private static String XX = "/";
     private static String NAME = "Users";
     private static String NAME_X = "users";
 
     public static void main(String[] args) throws Exception {
-        controller();
         service();
+        controller();
         //JavaFile javaFile = JavaFile.builder("com.shadow.service.impl", TypeSpec.interfaceBuilder("HelloWorld").build()).build();
         //javaFile.writeTo(new File("D:\\projects\\mywebapp\\src\\main\\java"));
     }
 
     public static void controller() throws Exception {
-
         AnnotationSpec controller = AnnotationSpec.builder(Controller.class).build();
         AnnotationSpec classRequestMapping = AnnotationSpec.builder(RequestMapping.class).addMember("value", "$S", XX + NAME).build();
         AnnotationSpec methodRequestMapping = AnnotationSpec.builder(RequestMapping.class).addMember("value", "$S", XX + INDEX).build();
+        String controllerVarName=NAME_X+ SUFFIX_CONTROLLER;
 
-        //FieldSpec fieldSpec=FieldSpec.builder()
+        Class clazz = Class.forName(PACKAGE + POINT + DAO + POINT + NAME+ SUFFIX_MAPPER);
+        List<MethodSpec> list=new ArrayList<>();
+        for (Method method : clazz.getDeclaredMethods()) {
+            Type[] genericParameterTypes = method.getGenericParameterTypes();
+
+            List<ParameterSpec> list1=new ArrayList<>();
+            List<String> names=new ArrayList<>();
+            for (Type gType : genericParameterTypes) {
+                String variableName=StringUtil.lowerFirstLetter(((Class) gType).getSimpleName());
+                ParameterSpec parameterSpec=  ParameterSpec.builder(gType, variableName).build();
+                list1.add(parameterSpec);
+                names.add(variableName);
+            }
+
+            MethodSpec index = MethodSpec.methodBuilder(method.getName())
+                    .addModifiers(Modifier.PUBLIC)
+                    .addParameters(list1)
+                    //.addJavadoc("XXX")
+                    .returns(method.getGenericReturnType())
+                    //.returns(ParameterizedTypeName.get( NAME+SUFFIX_MAPPER, ClassName.get(model.originatingElement()), TypeVariableName.get("?")))
+                    //.addCode(codeBuilder.build())
+                    .addCode("return "+controllerVarName+ POINT +method.getName()+"("+ Joiner.on(",").join(names)+");")
+                    .build();
+
+            list.add(index);
+        }
+
+
 
         MethodSpec index = MethodSpec.methodBuilder(INDEX).addAnnotation(methodRequestMapping).addModifiers(Modifier.PUBLIC).returns(String.class)
                 .addCode("return \"" + INDEX + "\";").build();
 
-        TypeSpec typeSpec = TypeSpec.classBuilder(NAME + SUFFIX_CONTROLLER).addModifiers(Modifier.PUBLIC).addAnnotation(controller).addAnnotation
+        TypeSpec typeSpec = TypeSpec.classBuilder(controllerVarName).addModifiers(Modifier.PUBLIC).addAnnotation(controller).addAnnotation
                 (classRequestMapping).addMethod(index).build();
 
         JavaFile javaFile = JavaFile.builder("com.shadow.controller", typeSpec).build();
@@ -71,9 +99,9 @@ public class TestJavaPoet {
     public static void service() throws Exception {
         AnnotationSpec service = AnnotationSpec.builder(Service.class).build();
         AnnotationSpec resource = AnnotationSpec.builder(Resource.class).build();
-        String mapperName=NAME_X+ MAPPER;
+        String mapperName=NAME_X+ SUFFIX_MAPPER;
 
-        Class clazz = Class.forName(PACKAGE + COMMA + DAO + COMMA + NAME+MAPPER);
+        Class clazz = Class.forName(PACKAGE + POINT + DAO + POINT + NAME+ SUFFIX_MAPPER);
 
         List<MethodSpec> list=new ArrayList<>();
 
@@ -87,7 +115,7 @@ public class TestJavaPoet {
                 String variableName=StringUtil.lowerFirstLetter(((Class) gType).getSimpleName());
                 ParameterSpec parameterSpec=  ParameterSpec.builder(gType, variableName).build();
                 list1.add(parameterSpec);
-                //CodeBlock.of("return "+mapperName+COMMA+method.getName()+"();",).toBuilder().build();
+                //CodeBlock.of("return "+mapperName+POINT+method.getName()+"();",).toBuilder().build();
                 names.add(variableName);
             }
 
@@ -97,22 +125,22 @@ public class TestJavaPoet {
                     .addParameters(list1)
                     //.addJavadoc("XXX")
                     .returns(method.getGenericReturnType())
-                    //.returns(ParameterizedTypeName.get( NAME+MAPPER, ClassName.get(model.originatingElement()), TypeVariableName.get("?")))
+                    //.returns(ParameterizedTypeName.get( NAME+SUFFIX_MAPPER, ClassName.get(model.originatingElement()), TypeVariableName.get("?")))
                     //.addCode(codeBuilder.build())
-                    .addCode("return "+mapperName+COMMA+method.getName()+"("+ Joiner.on(",").join(names)+");")
+                    .addCode("return "+mapperName+ POINT +method.getName()+"("+ Joiner.on(",").join(names)+");")
                     .build();
 
             list.add(index);
         }
 
         //TypeVariableName typeVariableName = TypeVariableName.get("T", clazz);
-        //TypeSpec t = TypeSpec.classBuilder(NAME + MAPPER).addTypeVariable(typeVariableName).build();
+        //TypeSpec t = TypeSpec.classBuilder(NAME + SUFFIX_MAPPER).addTypeVariable(typeVariableName).build();
 
         FieldSpec fieldSpec= FieldSpec.builder(clazz,mapperName,Modifier.PRIVATE).addAnnotation(resource).build();
 
-        TypeSpec typeSpec = TypeSpec.classBuilder(NAME + SERVICEIMPL).addModifiers(Modifier.PUBLIC).addField(fieldSpec).addAnnotation(service).addMethods(list).build();
+        TypeSpec typeSpec = TypeSpec.classBuilder(NAME + SUFFIX_SERVICE_IMPL).addModifiers(Modifier.PUBLIC).addField(fieldSpec).addAnnotation(service).addMethods(list).build();
 
-        JavaFile javaFile = JavaFile.builder("com.shadow.service.impl", typeSpec).build();
+        JavaFile javaFile = JavaFile.builder(PACKAGE+ POINT +SERVICE_IMPL, typeSpec).build();
         javaFile.writeTo(new File("D:\\projects\\mywebapp\\src\\main\\java"));
 
     }
