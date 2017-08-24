@@ -46,8 +46,8 @@ public class TestJavaPoet {
 
     public static void main(String[] args) throws Exception {
         intf();
-        service();
-        controller();
+        //service();
+        //controller();
     }
 
     public static void intf() throws Exception {

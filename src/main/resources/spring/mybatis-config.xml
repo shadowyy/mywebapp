@@ -28,6 +28,6 @@
 	<!--</environments>-->
 	<!--&lt;!&ndash; 加载映射文件 &ndash;&gt;-->
 	<!--<mappers>-->
-		<!--<mapper resource="mapper/*Mapper.xml"/>-->
+		<!--<mybatis.mapper resource="mybatis.mapper/*Mapper.xml"/>-->
 	<!--</mappers>-->
 </configuration>

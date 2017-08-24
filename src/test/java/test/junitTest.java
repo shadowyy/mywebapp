@@ -38,6 +38,11 @@ public class junitTest {
         assertEquals(20, num);
 
         //teardown
+    }
+
+    public static void main(String[] args) throws Exception {
+        Class clz=Class.forName("com.shadow.domain.Users");
+        System.out.println(clz.getSimpleName());
 
     }
 

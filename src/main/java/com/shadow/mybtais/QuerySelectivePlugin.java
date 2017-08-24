@@ -1,5 +1,6 @@
 package com.shadow.mybtais;
 
+import com.squareup.javapoet.ParameterSpec;
 import org.apache.commons.lang3.StringUtils;
 import org.mybatis.generator.api.GeneratedXmlFile;
 import org.mybatis.generator.api.IntrospectedColumn;
@@ -20,7 +21,10 @@ import org.mybatis.generator.codegen.mybatis3.MyBatis3FormattingUtilities;
 import org.mybatis.generator.config.Context;
 
 import java.io.File;
+import java.lang.reflect.Type;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -38,9 +42,7 @@ public class QuerySelectivePlugin extends PluginAdapter {
     @Override
     public void setContext(Context context) {
         super.setContext(context);
-
         context.getIntrospectedColumnImpl();
-
         //// 配置插件使用的模板引擎
         //PluginConfiguration cfg = PluginTools.getPluginConfiguration(context, CommentPlugin.class);
         //
@@ -70,12 +72,12 @@ public class QuerySelectivePlugin extends PluginAdapter {
         //        logger.error("反射异常",e);
         //    }
         //}
-
-
     }
 
     public void initialized(IntrospectedTable introspectedTable) {
-        System.out.println(1);
+        //use javaPoet gen code
+
+
     }
 
     //public boolean clientInsertSelectiveMethodGenerated(Method method,Interface interfaze, IntrospectedTable introspectedTable) {
@@ -88,17 +90,33 @@ public class QuerySelectivePlugin extends PluginAdapter {
         return false;
     }
 
+    Map<String, Type> map1 = new HashMap<>();
+    Map<String, List<ParameterSpec>> map2 = new HashMap<>();
+
+    //private void addMethod(Method method){
+    //    List<ParameterSpec> list=new ArrayList<>();
+    //    for (Parameter parameter : method.getParameters()) {
+    //        Class clz=Class.forName(parameter.getType().getFullyQualifiedName());
+    //        TypeName typeName=TypeName.get()
+    //        ParameterSpec parameterSpec=ParameterSpec.builder(,parameter.getName()).build();
+    //        list.add(parameterSpec);
+    //    }
+    //    FullyQualifiedJavaType returnType = method.getReturnType();
+    //
+    //    map1.put(method.getName(), );
+    //    map2.put(method.getName(), list);
+    //}
+
     public boolean sqlMapInsertElementGenerated(XmlElement element, IntrospectedTable introspectedTable) {
         return false;
     }
 
-    //不生成 deleteByPrimaryKey
+    ////不生成 deleteByPrimaryKey
     //public boolean clientDeleteByPrimaryKeyMethodGenerated(Method method, Interface interfaze, IntrospectedTable introspectedTable) {
-    //    return false;
+    //    return true;
     //}
-    //
     //public boolean sqlMapDeleteByPrimaryKeyElementGenerated(XmlElement element, IntrospectedTable introspectedTable) {
-    //    return false;
+    //    return true;
     //}
 
     //不生成 updateByPrimaryKey
@@ -158,6 +176,28 @@ public class QuerySelectivePlugin extends PluginAdapter {
 
         interfaze.addImportedTypes(importedTypes);
         interfaze.addMethod(method);
+
+
+        //for (Map.Entry<String, Object> stringObjectEntry : map.entries()) {
+        //    String methodName=stringObjectEntry.getKey();
+        //    Object obj=stringObjectEntry.getValue();
+        //    List<ParameterSpec> list=new ArrayList<>();
+        //    if (obj instanceof List){
+        //        List<FullyQualifiedJavaType> fullyQualifiedJavaTypes= ((List<FullyQualifiedJavaType>) obj);
+        //        for (FullyQualifiedJavaType fullyQualifiedJavaType : fullyQualifiedJavaTypes) {
+        //            fullyQualifiedJavaType.getShortName();
+        //        }
+        //    }else if (obj instanceof Parameter){
+        //        Parameter parameter= ((Parameter) obj);
+        //        parameter.getType();
+        //
+        //    }
+        //    MethodSpec intf = MethodSpec.methodBuilder(methodName)
+        //            .addModifiers(Modifier.PUBLIC,Modifier.ABSTRACT)
+        //            //.addParameters()
+        //            //.returns()
+        //            .build();
+        //}
         return true;
     }
 
