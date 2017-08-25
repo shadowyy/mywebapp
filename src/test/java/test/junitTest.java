@@ -41,8 +41,10 @@ public class junitTest {
     }
 
     public static void main(String[] args) throws Exception {
-        Class clz=Class.forName("com.shadow.domain.Users");
-        System.out.println(clz.getSimpleName());
+        //Class clz=Class.forName("com.shadow.domain.Users");
+        //System.out.println(clz.getSimpleName());
+
+
 
     }
 
