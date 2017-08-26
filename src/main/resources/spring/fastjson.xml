@@ -24,8 +24,17 @@
                         <value>QuoteFieldNames</value>
                     </list>
                 </property>
+                <!--<property name="fastJsonConfig" ref="fastJsonConfig"/>-->
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
+
+    <!--<bean id="fastJsonConfig" class="com.alibaba.fastjson.support.config.FastJsonConfig">-->
+        <!--<property name="features">-->
+            <!--<list>-->
+                <!--<value>IgnoreNotMatch</value>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
 
 </beans>

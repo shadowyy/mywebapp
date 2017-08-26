@@ -89,4 +89,11 @@ public class UserController {
         return new JsonResult();
     }
 
+    @RequestMapping(value = "/test")
+    @ResponseBody
+    public User test(User user) {
+        return userServiceImpl.queryUserById(user.getId());
+    }
+
+
 }

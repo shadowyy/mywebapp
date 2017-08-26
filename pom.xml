@@ -375,6 +375,14 @@
             <artifactId>javapoet</artifactId>
             <version>1.9.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.18</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
     <build>
         <!--把target修改为webapp的WEB-INF下-->

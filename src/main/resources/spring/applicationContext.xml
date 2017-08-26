@@ -10,14 +10,14 @@
     <import resource="quartz.xml"/>
 
     <!-- 配置SpringMVC @RequestBody和@ResponseBody 注解 -->
-    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <property name="messageConverters">
             <list>
                 <ref bean="jsonHttpMessageConverter"/>
             </list>
         </property>
     </bean>
-    <bean id="jsonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+    <bean id="jsonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
         <property name="supportedMediaTypes">
             <list>
                 <value>application/json;charset=UTF-8</value>
