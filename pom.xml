@@ -10,6 +10,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
         <jdk.version>1.8</jdk.version>
         <junit.version>4.12</junit.version>
         <spring.version>4.3.10.RELEASE</spring.version>
@@ -120,9 +121,9 @@
             <version>1.4</version>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>org.apache.commons</groupId>-->
-            <!--<artifactId>commons-dbcp2</artifactId>-->
-            <!--<version>2.1.1</version>-->
+        <!--<groupId>org.apache.commons</groupId>-->
+        <!--<artifactId>commons-dbcp2</artifactId>-->
+        <!--<version>2.1.1</version>-->
         <!--</dependency>-->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -212,6 +213,13 @@
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        <!--jackson xml-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
         <!--bean validation-->
         <dependency>
             <groupId>org.apache.bval</groupId>
@@ -223,6 +231,13 @@
             <artifactId>validation-api</artifactId>
             <version>1.1.0.Final</version>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.0.2.Final</version>
+            <scope>test</scope>
+        </dependency>
+
         <!--commons-->
         <dependency>
             <groupId>commons-beanutils</groupId>
@@ -382,6 +397,18 @@
             <version>1.16.18</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.shadowyy</groupId>
+            <artifactId>mybatis-plugins</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+
 
     </dependencies>
     <build>
@@ -393,7 +420,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
+                <version>3.6.2</version>
                 <executions>
                     <!--跳过test classes生成-->
                     <execution>
@@ -549,14 +576,11 @@
                         <artifactId>mysql-connector-java</artifactId>
                         <version>${mysql.driver.version}</version>
                     </dependency>
-                    <!--<dependency>-->
-                        <!--&lt;!&ndash;<groupId>com.itfsw</groupId>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<artifactId>mybatis-generator-plugin</artifactId>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<version>${mybatis.generator.plugin.version}</version>&ndash;&gt;-->
-                        <!--<groupId>com.shadowyy</groupId>-->
-                        <!--<artifactId>mywebapp</artifactId>-->
-                        <!--<version>0.0.1-SNAPSHOT</version>-->
-                    <!--</dependency>-->
+                    <dependency>
+                        <groupId>com.shadowyy</groupId>
+                        <artifactId>mybatis-plugins</artifactId>
+                        <version>1.0-SNAPSHOT</version>
+                    </dependency>
                 </dependencies>
             </plugin>
         </plugins>

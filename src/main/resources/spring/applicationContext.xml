@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="
-        http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <import resource="mybatis-spring.xml"/>
     <import resource="fastjson.xml"/>
     <import resource="quartz.xml"/>
+
+    <!--true基于类的代理，false是标准的JDK基于接口的代理-->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <!-- 使用注解的包，包括子集 该配置项其实也包含了自动注入上述processor的功能，因此当使用<context:component-scan/>后，即可将<context:annotation-config/>省去 -->
+    <context:component-scan base-package="com.shadow">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
 
     <!-- 配置SpringMVC @RequestBody和@ResponseBody 注解 -->
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
@@ -24,5 +34,69 @@
             </list>
         </property>
     </bean>
+
+    <!--使用httpclient的实现，带连接池，在httpclient4.3版本后才有-->
+    <bean id="httpClientBuilder" class="org.apache.http.impl.client.HttpClientBuilder" factory-method="create">
+        <property name="connectionManager">
+            <bean class="org.apache.http.impl.conn.PoolingHttpClientConnectionManager">
+                <!--整个连接池的并发-->
+                <property name="maxTotal" value="50"/>
+                <!--每个主机的并发-->
+                <property name="defaultMaxPerRoute" value="50"/>
+            </bean>
+        </property>
+        <!--开启重试-->
+        <property name="retryHandler">
+            <bean class="org.apache.http.impl.client.DefaultHttpRequestRetryHandler">
+                <constructor-arg value="2"/>
+                <constructor-arg value="true"/>
+            </bean>
+        </property>
+        <property name="defaultHeaders">
+            <list>
+                <bean class="org.apache.http.message.BasicHeader">
+                    <constructor-arg value="Content-Type"/>
+                    <constructor-arg value="text/html;charset=UTF-8"/>
+                </bean>
+                <bean class="org.apache.http.message.BasicHeader">
+                    <constructor-arg value="Accept-Encoding"/>
+                    <constructor-arg value="gzip,deflate"/>
+                </bean>
+                <bean class="org.apache.http.message.BasicHeader">
+                    <constructor-arg value="Accept-Language"/>
+                    <constructor-arg value="zh-CN"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="httpClient" factory-bean="httpClientBuilder" factory-method="build"/>
+
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+        <property name="messageConverters">
+            <list value-type="org.springframework.http.converter.HttpMessageConverter">
+                <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                    <property name="supportedMediaTypes" value="text/html;charset=UTF-8"/>
+                </bean>
+                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                    <property name="supportedMediaTypes" value="application/json;charset=UTF-8"/>
+                </bean>
+                <bean class="org.springframework.http.converter.ResourceHttpMessageConverter"/>
+                <bean class="org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter"/>
+                <bean class="org.springframework.http.converter.FormHttpMessageConverter"/>
+                <bean class="org.springframework.http.converter.xml.MappingJackson2XmlHttpMessageConverter"/>
+            </list>
+        </property>
+        <property name="requestFactory">
+            <bean class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory">
+                <constructor-arg ref="httpClient"/>
+                <!--连接时间(毫秒)-->
+                <property name="connectTimeout" value="20000"/>
+                <!--读取时间(毫秒)-->
+                <property name="readTimeout" value="20000"/>
+            </bean>
+        </property>
+    </bean>
+
 
 </beans>

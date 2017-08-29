@@ -8,8 +8,9 @@
 
     <context id="DB2Tables" targetRuntime="MyBatis3" defaultModelType="flat">
         <!--<plugin type="com.shadow.mybtais.DeleteLogicByIdsPlugin"/>-->
-        <plugin type="com.shadow.mybtais.QuerySelectivePlugin"/>
         <!--<plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>-->
+        <!--<plugin type="com.shadow.mybtais.QuerySelectivePlugin"/>-->
+        <plugin type="com.shadowyy.myabtis.CustomPlugin"/>
 
         <!-- 是否去除自动生成的注释 -->
         <commentGenerator>

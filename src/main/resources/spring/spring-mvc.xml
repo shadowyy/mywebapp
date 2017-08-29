@@ -9,19 +9,21 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
-    <mvc:annotation-driven />
+    <mvc:annotation-driven  />
 
     <mvc:annotation-driven validator="validator"/>
+
+    <!-- 数据验证 Validator bean -->
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <!--<property name="providerClass" value="org.apache.bval.jsr.ApacheValidationProvider"/>-->
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
+    </bean>
 
     <!--spring task-->
     <task:annotation-driven scheduler="scheduler" executor="executor"/>
     <task:executor id="executor" pool-size="5"/>
     <task:scheduler id="scheduler" pool-size=""/>
 
-    <!-- 数据验证 Validator bean -->
-    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
-        <property name="providerClass" value="org.apache.bval.jsr.ApacheValidationProvider"/>
-    </bean>
 
     <!--true基于类的代理，false是标准的JDK基于接口的代理-->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
@@ -29,9 +31,6 @@
     <!-- 使用注解的包，包括子集 -->
     <context:component-scan base-package="com.shadow" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
     </context:component-scan>
 
     <!--<mvc:resources mapping="/resources/**" location="/" />-->

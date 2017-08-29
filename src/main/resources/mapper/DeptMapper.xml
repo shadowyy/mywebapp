@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shadow.dao.DeptMapper">
+  <resultMap id="BaseResultMap" type="com.shadow.domain.Dept">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="PID" jdbcType="INTEGER" property="pid" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, PID, NAME
+  </sql>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dept
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" parameterType="com.shadow.domain.Dept">
+    insert into dept
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="pid != null">
+        PID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shadow.domain.Dept">
+    update dept
+    <set>
+      <if test="pid != null">
+        PID = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="querySelective" parameterType="com.shadow.domain.Dept" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/> from dept
+    <where>
+      <if test="id != null">
+        and ID = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="pid != null">
+        and PID = #{pid,jdbcType=INTEGER}
+      </if>
+      <if test="name != null">
+        and NAME = #{name,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

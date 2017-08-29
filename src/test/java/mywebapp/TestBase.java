@@ -1,9 +1,6 @@
 package mywebapp;
 
-import com.google.common.collect.Sets;
-
-import java.util.Arrays;
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created by alice on 2016/11/7 10:51
@@ -21,14 +18,19 @@ public class TestBase {
 //        System.out.println(w1.getName());
 //        System.out.println(w2.getName());
 
-        Set<String> set = Sets.newHashSet();
-        set.add("1");
-        set.add("2");
-        set.add("2");
+        //Set<String> set = Sets.newHashSet();
+        //set.add("1");
+        //set.add("2");
+        //set.add("2");
+        //
+        //String[] arr = {"3", "4"};
+        //arr = set.toArray(arr);
+        //System.out.println(Arrays.toString(arr));
 
-        String[] arr = {"3", "4"};
-        arr = set.toArray(arr);
-        System.out.println(Arrays.toString(arr));
+        //ParameterizedTypeReference parameterizedTypeReference=new ParameterizedTypeReference<List<Wine>>(){};
+        //TypeToken typeToken=new TypeToken<List<Wine>>(){};
+        com.google.common.reflect.TypeToken typeToken2=new com.google.common.reflect.TypeToken<List<Wine>>(){};
+
     }
 
     public static <T> T getEnum(Class<T> clazz, int index) {

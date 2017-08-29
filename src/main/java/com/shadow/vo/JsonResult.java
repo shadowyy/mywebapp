@@ -17,11 +17,11 @@ public class JsonResult<T> {
         this.data = data;
     }
 
-    public static <T> JsonResult success(T data) {
+    public static <T> JsonResult<T> success(T data) {
         return new JsonResult<>(true, null, data);
     }
 
-    public static <T> JsonResult fail(String msg, T data) {
+    public static <T> JsonResult<T> fail(String msg, T data) {
         return new JsonResult<>(false, msg, data);
     }
 
