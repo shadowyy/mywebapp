@@ -1,4 +1,4 @@
-package designPattern.observerPattern;
+package design_pattern.observerPattern;
 
 import java.util.HashSet;
 import java.util.Set;

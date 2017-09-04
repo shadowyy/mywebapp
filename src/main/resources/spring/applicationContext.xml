@@ -11,6 +11,9 @@
     <import resource="fastjson.xml"/>
     <import resource="quartz.xml"/>
 
+    <!--&lt;!&ndash;是classes下的spring目录中所有的xml文件&ndash;&gt;-->
+    <!--<import resource="classpath*:/spring/*.xml" />-->
+
     <!--true基于类的代理，false是标准的JDK基于接口的代理-->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 

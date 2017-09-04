@@ -1,4 +1,4 @@
-package designPattern.observerPattern;
+package design_pattern.observerPattern;
 
 /**
  * 具体观察者角色类

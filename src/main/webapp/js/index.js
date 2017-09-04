@@ -11,4 +11,3 @@ $(function () {
     getData();
     $("button").click(getData);
 }());
-

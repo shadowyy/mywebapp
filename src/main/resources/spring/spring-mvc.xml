@@ -15,8 +15,8 @@
 
     <!-- 数据验证 Validator bean -->
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
-        <!--<property name="providerClass" value="org.apache.bval.jsr.ApacheValidationProvider"/>-->
-        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
+        <property name="providerClass" value="org.apache.bval.jsr.ApacheValidationProvider"/>
+        <!--<property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>-->
     </bean>
 
     <!--spring task-->

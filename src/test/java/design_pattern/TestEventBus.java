@@ -1,4 +1,4 @@
-package designPattern;
+package design_pattern;
 
 import com.google.common.eventbus.DeadEvent;
 import com.google.common.eventbus.EventBus;

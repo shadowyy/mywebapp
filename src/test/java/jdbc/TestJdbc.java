@@ -12,7 +12,7 @@ import java.sql.Statement;
  * @version 2017/1/24 15:53
  */
 public class TestJdbc {
-    static final String DB_URL = "jdbc:mysql://localhost:3306/test";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8&useUnicode=true&autoReconnect=true&failOverReadOnly=false&useSSL=false&allowMultiQueries=true";
     static final String USER = "root";
     static final String PASS = "root";
 
@@ -23,7 +23,7 @@ public class TestJdbc {
         Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
         //3.操作数据库，实现增删改查
         Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT count(*) FROM USER");
+        ResultSet rs = stmt.executeQuery("SELECT count(*) FROM USERS");
         //如果有数据，rs.next()返回true
         while(rs.next()){
             System.out.println(rs.getInt(1));

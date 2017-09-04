@@ -1,0 +1,31 @@
+<html style="padding-bottom: 54px;">
+<head>
+    <title>jquery</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link href="/lib/bootstrap/3.3.7/css/bootstrap.css" type="text/css"/>
+    <script src="/lib/jquery/1.11.3/jquery.js"></script>
+    <script src="/lib/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script src="/lib/layer/layer.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".pagination").createPage({
+                totalPage: 30,
+                currPage: 14,
+                backFn: function (p) {
+                    console.log("回调函数：" + p);
+                }
+            });
+        })
+    </script>
+</head>
+
+<body>
+<div class="pagec" id="pagearea">
+    <ul class="pagination">
+    </ul>
+</div>
+</body>
+<script src="/js/patch.js"></script>
+<script src="/js/pagination.js"></script>
+</html>

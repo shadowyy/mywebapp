@@ -1,4 +1,4 @@
-package designPattern.observerPattern;
+package design_pattern.observerPattern;
 
 /**
  * 客户端
