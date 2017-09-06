@@ -25,8 +25,5 @@ public class TestJoor {
         arrayList.add("Hello");
         arrayList.add("World");
         int value = Reflect.on(arrayList).call("hugeCapacity", 12).get();
-
-
-
     }
 }
