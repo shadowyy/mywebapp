@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shadow.dao.UserDao">
+    <select id="queryUserById" parameterType="int" resultType="com.shadow.domain.User">
+        select * from user where id=#{id}
+    </select>
+    <select id="queryUser" resultType="com.shadow.domain.User">
+        select * from user
+        <where>
+            <if test="id != null">
+                and id=#{id}
+            </if>
+            <if test="name != null and name != '' ">
+                and name=#{name}
+            </if>
+            <if test="age != null">
+                and age=#{age}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insertBatch">
+        <choose>
+            <when test="list!=null and list.size()>0">
+                INSERT INTO user (name, age) VALUES
+                <foreach collection="list" item="item" index="index" separator=",">
+                    (#{item.name},#{item.age})
+                </foreach>
+            </when>
+            <otherwise>
+                select * from test.user;
+            </otherwise>
+        </choose>
+    </insert>
+</mapper>

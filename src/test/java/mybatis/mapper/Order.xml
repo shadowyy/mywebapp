@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shadow.dao.PersonDao">
+    <resultMap id="map1" type="com.shadow.domain.Person">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <collection property="orders" resultMap="map2"  column="ChildId" notNullColumn="id"
+                    javaType="ArrayList" ofType="com.shadow.domain.Order"/>
+    </resultMap>
+
+    <resultMap id="map2" type="com.shadow.domain.Order">
+        <!--<id column="id" property="userId"/>-->
+        <result column="order_id" property="id"/>
+        <result column="order_name" property="name"/>
+    </resultMap>
+
+    <select id="queryPersonById" parameterType="int" resultMap="map1">
+        SELECT
+            u.id id,
+            u.`name` NAME,
+            o.id order_id,
+            o.`name` order_name
+        FROM
+            `user` u
+        INNER JOIN `order` o ON u.id = o.user_id
+        <where>
+            <if test="_parameter  != null">
+                u.id = #{id}
+            </if>
+        </where>
+        ORDER BY
+        u.id
+    </select>
+</mapper>
