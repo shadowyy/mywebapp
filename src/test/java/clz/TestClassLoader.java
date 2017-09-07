@@ -14,14 +14,14 @@ import java.lang.reflect.Method;
  */
 public class TestClassLoader {
 
-private static final Logger LOGGER = LoggerFactory.getLogger(TestClassLoader.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(TestClassLoader.class);
 
     public static void main(String[] args) throws Exception {
         //System.out.println(System.getProperty("sun.boot.class.path"));
 
         String path = "D:\\deploy\\JDBC\\ClassLoader\\build\\classes\\classloader\\LocalClass.class";
         ManageClassLoader mc = new ManageClassLoader();
-        while(true){
+        while (true) {
             Class c = mc.loadClass(path);
             Object o = c.newInstance();
             Method m = c.getMethod("getName");
