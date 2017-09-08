@@ -1,6 +1,5 @@
-package com.shadow.util;
+package com.shadow.util.bean;
 
-import com.shadow.util.bean.BeanCreateUtil;
 import net.sf.cglib.beans.BeanCopier;
 import net.sf.cglib.core.Converter;
 
