@@ -22,7 +22,7 @@ public class TestNio {
         ByteBuffer buf = ByteBuffer.allocate(48);
         ByteBuffer buf2 = ByteBuffer.allocate(16);
 
-        ByteBuffer[] byteBuffers={buf,buf2};
+        ByteBuffer[] byteBuffers = {buf, buf2};
 
         //buf.put("dasdad".getBytes());
         long bytesRead;
@@ -43,27 +43,26 @@ public class TestNio {
 
     private static void test2() throws Exception {
         RandomAccessFile fromFile = new RandomAccessFile("d:/TestEncoding.java", "rw");
-        FileChannel      fromChannel = fromFile.getChannel();
+        FileChannel fromChannel = fromFile.getChannel();
 
         RandomAccessFile toFile = new RandomAccessFile("d:/xxx.java", "rw");
-        FileChannel      toChannel = toFile.getChannel();
+        FileChannel toChannel = toFile.getChannel();
 
         long position = 0;
-        long count    = fromChannel.size();
+        long count = fromChannel.size();
 
         toChannel.transferFrom(fromChannel, position, count);
     }
 
     private static void test3() throws Exception {
-
         RandomAccessFile fromFile = new RandomAccessFile("d:/1.txt", "rw");
-        FileChannel      fromChannel = fromFile.getChannel();
+        FileChannel fromChannel = fromFile.getChannel();
 
         RandomAccessFile toFile = new RandomAccessFile("d:/2.txt", "rw");
-        FileChannel      toChannel = toFile.getChannel();
+        FileChannel toChannel = toFile.getChannel();
 
         long position = 0;
-        long count    = fromChannel.size();
+        long count = fromChannel.size();
 
         fromChannel.transferTo(position, count, toChannel);
     }

@@ -21,9 +21,9 @@ public class BeanCopyUtil {
         BeanCopier beanCopier = map.get(key);
         if (beanCopier == null) {
             beanCopier = BeanCopier.create(source.getClass(), target.getClass(), useConverter);
-            BeanCopier copier = map.putIfAbsent(key, beanCopier);
-            if (copier != null) {
-                beanCopier = copier;
+            BeanCopier tmp = map.putIfAbsent(key, beanCopier);//如果key存在的情况下，在putIfAbsent下不会修改，且会返回该值，而put下则会修改成新的值
+            if (tmp != null) {
+                beanCopier = tmp;
             }
         }
         return beanCopier;
