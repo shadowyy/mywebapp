@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
- * JDK动态代理：因为 Java 的单继承特性（每个代理类都继承了 Proxy 类），只能针对接口创建代理类，不能针对类创建代理类
+ * JDK动态代理：因为 Java 的单继承特性（每个代理类都继承了 Proxy 类），且只能针对接口创建代理类，不能针对类创建代理类
  *
  * @author shadowyy
  * @version 2017/9/5 11:08

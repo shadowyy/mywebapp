@@ -1,7 +1,10 @@
 package thread;
 
+import java.io.Serializable;
+
 /**
  * 单例
+ *
  *
  * @author shadowyy
  * @version 2017/8/24 19:30
@@ -16,9 +19,10 @@ public class TestSingle {
  * 饿汉式
  * <p>
  * 1.资源利用效率不高
- * 2.Single实例的创建依赖参数或配置文件，则在getInstance()之前必须调用某个方法来设置这些参数，但在设置之前，可能已经new了Single实例，这种情况下，饿汉式的写法是无法使用的
+ * 2.Single实例的创建依赖参数或配置文件，则在getInstance()之前必须调用某个方法来设置这些参数，但在设置之前，
+ * 可能已经new了Single实例，这种情况下，饿汉式的写法是无法使用的
  */
-class Singleton {
+class Singleton  implements Serializable {
     private Singleton() {
     }
 
@@ -26,6 +30,24 @@ class Singleton {
 
     public static Singleton getInstance() {
         return instance;
+    }
+
+    private  Object readResolve(){
+        return instance;
+    }
+}
+
+/**
+ * 饿汉式——静态工厂实现
+ */
+class StaticFactorySingleton {
+    private StaticFactorySingleton() {
+    }
+
+    private static final StaticFactorySingleton staticFactorySingleton=new StaticFactorySingleton();
+
+    public StaticFactorySingleton getInstance() {
+        return staticFactorySingleton;
     }
 }
 
@@ -60,7 +82,7 @@ class LazySingleton {
  * 2、堆内存开辟空间准备初始化对象
  * 3、初始化对象
  * 4、栈中引用指向这个堆内存空间地址指令
- *
+ * <p>
  * 重排之后可能会是1、2、4、3；这样重排之后对单个线程来说效果是一样的，所以JVM
  * 认为是合法的重排序，但是在多线程环境下就会出问题，这里到4的时候help已经指向了一块堆内存！=null ，只是这块堆内存还没初始化就直接返回了，使用的时候抛NullPointException。
  * <p>
@@ -95,11 +117,15 @@ class StaticSingleton {
     private StaticSingleton() {
     }
 
-    private static class InstanceHolder {
-        private static final StaticSingleton instance = new StaticSingleton();
+    private static class StaticSingletonHolder {
+        private static final StaticSingleton staticSingleton = new StaticSingleton();//最好加上final
     }
 
-    public static StaticSingleton getInstance() {
-        return InstanceHolder.instance;
+    public StaticSingleton getInstance() {
+        return StaticSingletonHolder.staticSingleton;
     }
+}
+
+enum EnumSingleton{
+
 }

@@ -11,14 +11,15 @@ import java.util.concurrent.Semaphore;
 public class TestSemaphore {
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newCachedThreadPool();
-        final Semaphore semaphore = new Semaphore(5);
-        for (int index = 0; index < 20; index++) {
-            final int NO = index;
+        final Semaphore semaphore = new Semaphore(2);//允许多少个令牌
+        for (int index = 0; index < 10; index++) {
+            int NO = index;
             Runnable runnable = () -> {
                 try {
                     semaphore.acquire();
                     System.out.println("Accessing:" + NO);
-                    Thread.sleep((long) (Math.random() * 10000));
+                    //Thread.sleep((long) (Math.random() * 10000));
+                    Thread.sleep(1000);
                     semaphore.release();
                     System.out.println("------------------" + semaphore.availablePermits());//指的是当前信号灯库中有多少个可以被使用
                 } catch (InterruptedException e) {

@@ -1,9 +1,12 @@
 package test;
 
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.net.Socket;
 import java.util.ArrayList;
 
 /**
@@ -27,6 +30,16 @@ public class Test {
         //}
         //reader.close();
         test0();
+        String host = "127.0.0.1";
+        int port = 8888;
+        Socket socket = new Socket(host, port);
+
+        OutputStream outputStream = socket.getOutputStream();
+        Writer writer= new OutputStreamWriter(outputStream);
+        writer.write("xx");
+        writer.flush();
+        writer.close();
+        socket.close();
     }
 
     /**
@@ -77,3 +90,5 @@ public class Test {
 }
 
 
+
+//
