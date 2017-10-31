@@ -2,7 +2,6 @@ package com.shadow.util.json;
 
 import com.google.gson.Gson;
 
-import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 /**
@@ -40,31 +39,4 @@ public class GsonUtil {
         return GSON.fromJson(json, new GenericOf(clz, wrapped));
     }
 
-    private static class GenericOf implements ParameterizedType {
-        Type container;
-        Type[] wrapped;
-
-        public GenericOf() {
-        }
-
-        public GenericOf(Type container, Type[] wrapped) {
-            this.container = container;
-            this.wrapped = wrapped;
-        }
-
-        @Override
-        public Type[] getActualTypeArguments() {
-            return wrapped;
-        }
-
-        @Override
-        public Type getRawType() {
-            return container;
-        }
-
-        @Override
-        public Type getOwnerType() {
-            return null;
-        }
-    }
 }

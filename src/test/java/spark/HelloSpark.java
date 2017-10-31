@@ -16,11 +16,11 @@ public class HelloSpark {
     public static void main(String[] args) throws Exception {
         SparkConf conf = new SparkConf().setMaster("local").setAppName("HelloSpark");
 
-        SparkSession spark = SparkSession
-                .builder()
-                .master("local")
-                .appName("---")
-                .getOrCreate();
+        //SparkSession spark = SparkSession
+        //        .builder()
+        //        .master("local")
+        //        .appName("---")
+        //        .getOrCreate();
 
         JavaSparkContext jsc = new JavaSparkContext(conf);
 
